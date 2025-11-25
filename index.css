@@ -1,0 +1,105 @@
+/* =================== GLOBAL & LAYOUT =================== */ /* Section label for globals and layout rules */
+/* Root CSS variable for header height so padding can adapt if you change it here */ :root { --header-height: 70px; } /* Define header height variable */
+/* Remove default browser margin and set fonts & base box sizing */ html, body { margin: 0; padding: 0; box-sizing: border-box; height: 100%; } /* Reset margins/padding, enforce box-sizing, ensure full height */
+/* Make body a column flex container so footer can be pushed down with margin-top:auto */ body { display: flex; flex-direction: column; min-height: 100vh; padding-top: var(--header-height); font-family: 'Times New Roman', Times, serif; background-color: #d0fac6; margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } /* Body layout, top padding to accommodate fixed header, font, background */
+/* Prevent horizontal overflow caused by large images or elements */ body { overflow-x: hidden; } /* Hide horizontal scroll if any element overflows */
+/* Ensure all elements use border-box sizing for predictable sizing */ *, *::before, *::after { box-sizing: inherit; } /* Consistent box-sizing across elements */
+
+/* =================== HEADER & NAVIGATION =================== */ /* Section label for header & nav */
+/* Header container is fixed to top so it stays visible */ header { padding: 15px 18px; background-color: #09360b; color: white; width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; box-shadow: 2px 2px 8px rgba(2, 19, 0, 0.9); background-image: url("pictures/maroonbackground4.jpeg"); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; } /* Fixed header with texture image and shadow */
+/* Nav wrapper uses flex to position logo and nav links */ nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: rgb(7, 49, 7); color: white; width: 97%; box-sizing: border-box; border-radius: 8px; padding-right: 10px; margin: 0 auto; } /* Navigation bar layout and styling */
+/* Logo block styling for the heading inside nav */ .logo h4 { margin: 0; font-size: 1rem; font-weight: 900; color: #ffffff; letter-spacing: 0.08px; text-transform: uppercase; font-family: "Poppins", sans-serif; transition: all 0.3s ease; cursor: pointer; } /* Logo font & hover transition */
+/* Logo hover transform and color change */ .logo h4:hover { color: rgb(117, 189, 107); transform: scale(1.05); text-shadow: 0 0 6px rgba(117, 189, 107, 0.5); } /* Hover effect for logo */
+/* Navigation links list resets default list styling */ .nav-links { list-style: none; display: flex; gap: 7px; margin: 0; padding: 0; } /* Horizontal nav links container */
+/* Individual link base style */ .nav-links li a { color: white; text-decoration: none; font-weight: 800; font-size: 0.8rem; transition: 0.3s; padding: 10px; border-radius: 5px; display: inline-block; } /* Style for nav anchors */
+/* Hover effect for nav links */ .nav-links li a:hover { background-color: #a1e9a4; color: #09360b; font-weight: 900; } /* Hover background & color change */
+/* Dropdown parent positioning */ .dropdown { position: relative; } /* Parent for absolute dropdowns */
+/* Dropdown content hidden by default and styled */ .dropdown-content { list-style: none; display: none; position: absolute; background-color: #d9f7da; min-width: 200px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); top: 100%; left: 0; border-radius: 8px; overflow: hidden; z-index: 999; } /* Dropdown menu container */
+/* Dropdown anchor styling inside dropdown */ .dropdown-content li a { color: black; padding: 8px 12px; display: block; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 1rem; text-decoration: none; } /* Links inside dropdown */
+/* Hover effect on dropdown links */ .dropdown-content li a:hover { background-color: #09630ee8; color: white; } /* Hover style for dropdown items */
+/* Show dropdown when hovering its parent (desktop) */ .dropdown:hover .dropdown-content { display: block; } /* Desktop hover to show dropdown */
+/* Hamburger toggle button hidden by default; shown on mobile */ .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; } /* Hamburger icon container */
+
+/* =================== RESPONSIVE NAV (tablet & mobile) =================== */ /* Section heading for responsive nav */
+/* Adjustments for tablet sizes */ @media (max-width: 992px) { nav { padding: 12px 20px; } .logo h4 { font-size: 1.1rem; } .nav-links li a { font-size: 0.85rem; } } /* Tablet nav adjustments */
+/* Mobile layout */ @media (max-width: 768px) { nav { flex-direction: row; justify-content: space-between; align-items: center; padding: 12px 18px; } .menu-toggle { display: block; position: relative; margin-left: auto; } .nav-links { display: none; flex-direction: column; width: 100%; background-color: #2e7d32; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); box-sizing: border-box; padding: 0; } .nav-links.show { display: flex; } .nav-links li { width: 100%; } .nav-links li a { padding: 15px; } .dropdown:hover .dropdown-content { display: none; } .dropdown .dropdown-content { position: static; } } /* Mobile nav stacked and tappable links */
+
+/* =================== SLIDER SECTION =================== */ /* Label for slider section */
+/* Slider section with background image and overlay */ .slider-section { position: relative; background-image: url("pictures/compund_flowershapping_cutter.jpeg"); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; padding: 80px 20px; z-index: 1; } /* Slider section background & padding */
+/* Dark overlay that covers the slider background to improve text readability */ .slider-section::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(59, 85, 59, 0.7); z-index: 0; pointer-events: none; } /* Overlay to darken background */
+/* Ensure content inside slider sits above overlay */ .slider-section * { position: relative; z-index: 2; } /* Bring slider content above overlay */
+/* Slider container wrapper to hold columns */ .slider-container { position: relative; z-index: 3; max-width: 1200px; margin: 0 auto; } /* Container limits width and centers content */
+/* Row layout for the three slider columns */ .row { display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 20px; width: 100%; } /* Row flex for columns */
+/* Column sizing for desktop for three across */ .col-sm-4 { flex: 1 1 calc(33.33% - 20px); max-width: 33.33%; display: flex; flex-direction: column; } /* Column width and stacking */
+/* Slider card base positioning to allow absolute children */ .slider { position: relative; width: 100%; height: 400px; overflow: hidden; border-radius: 10px; box-shadow: 4px 4px 15px rgba(8, 59, 12, 0.733); margin-top: 20px; } /* Slider card style and size */
+/* Make slider images behave responsively and fill the slider */ .slider img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; opacity: 0; animation: fade 9s infinite; transition: opacity 0.5s ease-in-out; z-index: 1; } /* Slider images absolute and animated */
+/* Staggered animation delays for slides */ .slider img:nth-child(1) { animation-delay: 0s; } .slider img:nth-child(2) { animation-delay: 3s; } .slider img:nth-child(3) { animation-delay: 6s; } /* Delay each image animation */
+/* Pause animation on hover for better UX */ .slider:hover img { animation-play-state: paused; } /* Pause when hovering slider */
+/* Fade keyframes for slider cycling */ @keyframes fade { 0% { opacity: 0; } 10% { opacity: 1; } 30% { opacity: 1; } 40% { opacity: 0; } 100% { opacity: 0; } } /* Fade animation sequence */
+/* Frosted card that holds the button; centered horizontally */ .slider-card { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(6px); padding: 12px 14px; border-radius: 10px; z-index: 10; } /* Frosted overlay card style */
+/* Primary slider button style */ .slider-button { background-color: #073107; color: #ffffff; padding: 10px 25px; border-radius: 8px; font-size: 1.2rem; font-weight: 700; text-align: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 2; transition: transform 0.3s ease, background-color 0.3s ease; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; } /* Button inside slider */
+/* Button hover transforms to a darker maroon */ .slider-button:hover { background-color: rgb(49, 3, 3); transform: translateX(-50%) scale(1.05); } /* Button hover behavior */
+/* Anchor inside slider button inherits text styles */ .slider-button a { color: #eef8f2; text-decoration: none; font-size: inherit; font-weight: 700; display: inline-block; } /* Link style inside button */
+
+/* =================== SLIDER RESPONSIVE =================== */ /* Section for responsive slider rules */
+/* Adjust row & slider dimensions for tablet */ @media (max-width: 992px) { .row { flex-wrap: wrap; } .col-sm-4 { flex: 1 1 calc(50% - 15px); max-width: 50%; } .slider { height: 250px; } } /* Tablet slider sizing */
+/* Adjust for mobile narrow screens */ @media (max-width: 768px) { .col-sm-4 { flex: 1 1 100%; max-width: 100%; } .slider { height: 200px; } .slider-card { bottom: 8px; padding: 10px; } .slider-button { font-size: 1rem; padding: 8px 16px; } } /* Mobile slider sizing */
+/* Small phone adjustments */ @media (max-width: 480px) { .slider { height: 150px; } } /* Very small phones */
+/* Extra small phones */ @media (max-width: 360px) { .slider { height: 120px; } } /* Tiny phone sizes */
+
+/* =================== WHO WE ARE SECTION =================== */ /* Section label */
+/* Base styling for who-we-are with background image and fallback */ .who-we-are { position: relative; padding: 60px 20px; background: rgba(244, 253, 244, 1); background-image: url("pictures/soil_cleaning_garden.jpeg"); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; } /* Who-we-are background & padding */
+/* Semi-transparent overlay to tame the background image */ .who-we-are::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(168, 157, 109, 0.7); z-index: 1; pointer-events: none; } /* Overlay for readability */
+/* Container inside who-we-are that must appear above overlay */ .who-we-are .who-container { position: relative; z-index: 2; display: flex; gap: 25px; align-items: center; padding: 40px; border-radius: 16px; } /* White card style inside section */
+/* Left column text width and color */ .who-text { width: 60%; color: #09360b; } /* Who text column styling */
+/* Decorative hr style inside who-text */ .who-text hr { width: 120px; height: 3px; border: none; background: maroon; margin-bottom: 15px; margin-left: 0; } /* Decorative horizontal rule */
+/* H1 style inside who-text */ .who-text h1 { font-size: 3.0rem; margin-bottom: 10px; font-weight: 800; text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.2); } /* Large heading */
+/* Paragraph styling inside who-text */ .who-text p { margin-bottom: 14px; line-height: 1.5; font-size: 1.3rem; } /* Paragraph spacing and size */
+/* Subheading style inside who-text */ .who-text h4 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; } /* Subheading style */
+/* Button inside who-text */ .who-text button { margin-top: 15px; background: maroon; color: #fff; padding: 12px 15px; border-radius: 6px; border: none; cursor: pointer; font-weight: 700; transition: 0.3s; } /* CTA button style */
+/* Button hover color change */ .who-text button:hover { background: #176637; } /* Button hover */
+/* Right column image wrapper */ .who-image { margin-left: 40px; width: 40%; } /* Image container sizing */
+/* Image inside who-image responsive rules */ .who-image img { width: 100%; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); display: block; height: auto; } /* Image styles and responsive behavior */
+/* Responsive stack for who-container on medium and small screens */ @media (max-width: 992px) { .who-container { flex-direction: column; text-align: center; } .who-text, .who-image { width: 100%; margin-left: 0; } .who-text h1 { font-size: 2.4rem; } .who-text p { font-size: 1.1rem; } } /* Stack columns and resize text */
+
+/* =================== WHY CHOOSE US SECTION =================== */ /* Section label */
+/* Outer container for the why-choose-us section */ .why-choose-us { position: relative; background-color: #f0fdf4; padding: 60px 20px; text-align: center; background-image: url("pictures/grass_cleaning2.jpeg"); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; } /* Section background & padding */
+/* Overlay to darken the background */ .why-choose-us::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(54, 71, 55, 0.65); pointer-events: none; z-index: 1; } /* Dark overlay for the section */
+/* Ensure elements inside sit above overlay */ .why-choose-us * { position: relative; z-index: 2; } /* Bring content above overlay */
+/* Heading style inside why-choose-us */ .why-choose-us h2 { font-size: 2.8rem; color: #09360B; text-shadow: 0px 2px 4px #eaf0eb; margin-bottom: 15px; font-weight: bold; } /* Section heading */
+/* Paragraph style inside why-choose-us */ .why-choose-us p { font-size: 1.2rem; color: #ebf1eb; margin-bottom: 40px; } /* Intro paragraph */
+/* Benefits row grid using flexbox */ .benefits-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; } /* Row of benefit cards */
+/* Individual benefit card style */ .benefit { flex: 1 1 220px; max-width: 250px; background-color: rgb(211, 223, 212); padding: 20px; border-radius: 10px; box-shadow: 2px 2px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; } /* Benefit card styling */
+/* Hover lift effect for benefit cards */ .benefit:hover { transform: translateY(-5px); box-shadow: 4px 4px 20px rgba(0,0,0,0.45); } /* Hover for cards */
+/* Icon size inside benefit cards */ .benefit img { width: 60px; height: 60px; margin-bottom: 5px; display: block; } /* Image/icon sizing */
+/* Benefit title style */ .benefit h4 { font-size: 1.2rem; color: #083a0b; margin-bottom: 10px; font-weight: 800; } /* Benefit heading */
+/* Benefit paragraph styling */ .benefit p { font-size: 1.0rem; color: #555; line-height: 1.4; } /* Benefit paragraph */
+/* Responsive adjustments for benefit row on tablets */ @media (max-width: 992px) { .benefits-row { gap: 20px; } } /* Reduce gaps on tablet */
+/* Stack benefits vertically on small screens */ @media (max-width: 768px) { .benefits-row { flex-direction: column; align-items: center; } } /* Vertical layout for benefits */
+
+/* =================== FOOTER ==================== */ /* Footer section label */
+/* Base footer styling with background image and color */ .footer { background: #dee7ddda; color: #d1d4d0; padding: 0; font-family: 'Times New Roman', Times, serif; background-image: url("pictures/greensquaredesign.jpeg"); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; margin-top: auto; } /* Footer background and margin-top:auto pushes it to bottom */
+/* Main footer row layout using flexbox */ .footer .row { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 12px; width: 100%; box-sizing: border-box; gap: 18px; max-width: 1200px; margin: 0 auto; } /* Footer row layout and spacing */
+/* Footer logo heading style */ .footer .footer-logo h4 { color: #fff; font-size: 20px; letter-spacing: 1px; font-weight: 700; margin: 0 0 8px 0; } /* Footer logo heading */
+/* Footer logo image container sizing */ .footer .footer-logo img { width: 150px; height: auto; display: block; margin: 0; } /* Footer logo image sizing */
+/* Footer logo wrapper padding */ .footer .footer-logo { padding-left: 20px; width: 150px; height: auto; display: block; margin: 0; } /* Footer logo wrapper */
+/* Footer headings style */ .footer h4 { padding-right: 20px; color: white; margin-bottom: 10px; font-weight: 900; } /* Footer headings */
+/* Footer paragraph styling */ .footer p { padding-right: 20px; color: white; font-size: 16px; line-height: 1.3; margin: 4px 0; } /* Footer paragraph */
+/* Footer link style */ .footer a { color: white; text-decoration: none; transition: 0.3s; } /* Footer links */
+/* Decorative hr in footer */ .footer hr { border: none; height: 1px; background: linear-gradient(to right, #a3ec94, transparent); margin: 0; } /* Footer hr */
+/* Copyright text alignment and spacing */ .footer .copyright { text-align: center; font-size: 14px; color: whitesmoke; padding: 12px 0 20px 0; margin: 0; } /* Copyright */
+
+/* =================== RESPONSIVE FOOTER ==================== */ /* Footer responsive rules */
+/* Stack footer columns on smaller screens */ @media (max-width: 768px) { .footer .row { flex-direction: column; text-align: center; padding: 20px; } .footer .footer-logo, .footer .footer-text { flex: 1 1 100%; text-align: center; margin-bottom: 20px; } .footer .footer-logo img { margin: 0 auto; } .footer .copyright { font-size: 13px; } } /* Mobile footer stacking */
+
+/* =================== IMAGES & MEDIA HELPERS =================== */ /* Helpers for images and media */
+/* Ensure every img is responsive and does not overflow container */ img { max-width: 100%; height: auto; display: block; } /* Global responsive image rule */
+/* Prevent links from overflowing with long content */ a { word-break: break-word; } /* Wrap long URLs or content */
+
+/* =================== UTILITIES =================== */ /* Small utility classes */
+/* Utility to visually hide content but keep it accessible if needed */ .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; } /* Screen reader only */
+
+/* =================== MOBILE PERFORMANCE TWEAKS =================== */ /* Improve mobile performance by disabling heavy background-attachment on small screens */
+/* On small screens change background-attachment from fixed to scroll to avoid jank */ @media (max-width: 768px) { .slider-section, .who-we-are, .why-choose-us, .footer, header { background-attachment: scroll; } } /* Disable fixed backgrounds on mobile for performance */
+
+/* END OF CSS */ /* File terminator comment */
