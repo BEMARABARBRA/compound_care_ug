@@ -1,45 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Compound Slashing</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="c_slashing.css" rel="stylesheet">
-    </head>
-    <body>
+<head>
+    <title>Compound Slashing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="c_slashing.css">
+</head>
 
+<body>
 
-        <div class="row">
+    <section class="slashing-section">
 
-            <h3> MOWING | SLASHING <i>(Includes Removal of Cut Grass & Post 
-                -Slash Compound Cleaning) </i></h3>
-            <p>This service does not include disposal of cut grass.</p>
-            <div class="col">
-                <h4>Normal Grass</h4>
-                <p>Grass that is short to medium height, usually below the knee, easy to cut with a lawn mower or slasher. </p>
-                <p><strong>Cost: 500 per sqm</strong></p>
+        <!-- Heading -->
+        <h2 class="section-title" data-animate>
+            MOWING | SLASHING 
+            <span class="subtitle">(Includes Removal of Cut Grass & Post-Slash Compound Cleaning)</span>
+        </h2>
+
+        <!-- Notice -->
+        <p class="notice" data-animate>
+            This service does not include disposal of cut grass. Client must provide a dumping area.
+        </p>
+
+        <!-- Mowing Services -->
+        <div class="price-grid">
+
+            <div class="price-card" data-animate>
+                <h3>Normal Grass</h3>
+                <p>Short to medium height grass, usually below the knee.</p>
+                <button class="price-btn">UGX 500 / sqm</button>
             </div>
 
-            <div class="col">
-                <h4>Overgrown Grass</h4>
-                <p>Grass that has grown very tall, usually above the knee, sometimes touching the waist.</p>
-                <p><strong>Cost: UGX550 per sqm</strong></p>
-
-            </div>
-            <div class="col">
-                <h4>Tough Weeds / Bushy Grass</h4>
-                <p>Areas with thick, hard weeds such as elephant grass, tough stems, or wild bush-like plants that cannot be cut by normal slashers.</p>
-                <p><strong>Cost: UGX 650 per sqm</strong></p>
+            <div class="price-card" data-animate>
+                <h3>Overgrown Grass</h3>
+                <p>Taller grass above knee height, sometimes reaching the waist.</p>
+                <button class="price-btn">UGX 550 / sqm</button>
             </div>
 
-            <div class="col"></div>
-                <h4>Lawn (Compound) Care Add-Ons</h4>
-                <ul>
-                    <li>Edging & Shaping Lawn Borders: UGX 200 per sqm</li>
-                    <li>Weed Control Treatment: UGX 250 per sqm</li>
-                </ul>
+            <div class="price-card" data-animate>
+                <h3>Tough Weeds / Bushy Grass</h3>
+                <p>Elephant grass or bush-like weeds with thick stems.</p>
+                <button class="price-btn">UGX 650 / sqm</button>
             </div>
-          </div>
 
-    </body>
+        </div>
+
+        <!-- Add-On Services (now matching mowing design) -->
+        <h2 class="addons-title" data-animate>Lawn (Compound) Care Add-Ons</h2>
+
+        <div class="price-grid">
+
+            <div class="price-card" data-animate>
+                <h3>Edging & Shaping Borders</h3>
+                <p>Sharp and clean lawn edge shaping for a modern look.</p>
+                <button class="price-btn">UGX 200 / sqm</button>
+            </div>
+
+            <div class="price-card" data-animate>
+                <h3>Weed Control Treatment</h3>
+                <p>Chemical or manual removal of weeds to maintain clean lawns.</p>
+                <button class="price-btn">UGX 250 / sqm</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const animateElements = document.querySelectorAll("[data-animate]");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("animate");
+            });
+        });
+        animateElements.forEach(el => observer.observe(el));
+    </script>
+
+</body>
 </html>
