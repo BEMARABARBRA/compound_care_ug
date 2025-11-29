@@ -17,46 +17,92 @@ body {
 /* =================== SLASHING SECTION =================== */
 .slashing-section {
     padding: 60px 20px; /* Section spacing */
-    max-width: 1200px; /* Max width for large screens */
-    margin: 0 auto; /* Center the section */
+    max-width: 100%; /* full width */
+    margin: 0 ; /* Remove centering container */
+
+    background-image: url("pictures/mowing_background_image.png"); /* Your background image */
+    background-size: contain; /* Show 100% of the image without cutting */
+    background-position: top center; /* Show the head properly */
+    background-repeat: no-repeat; /* Do not repeat image */
+    background-color: #000; /* Fills empty space behind the image */
+    background-size: 100% 130%;
+    background-attachment: fixed; /* Parallax effect - background image stay fixed (static) while the rest of the page scrolls*/
+
+
+
+    position: relative; /* For overlay */
+    z-index: 1;
 }
 
-/* =================== SECTION HEADINGS =================== */
+/* Soft dark overlay so text stays readable */
+.slashing-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.70); /* Adjust overlay brightness */
+    z-index: -1; /* Keep overlay behind content */
+}
+
+
+
+/* =================== PREMIUM HEADING STYLE FOR BACKGROUND IMAGES =================== */
 .section-title {
-    font-size: 2.8rem; /* Large main title */
-    font-weight: 900; /* Bold heading */
-    text-align: center; /* Centered */
-    color: #073107; /* Dark green accent */
-    margin-bottom: 15px; /* Spacing below */
-    opacity: 0; /* Hidden for scroll animation */
-    transform: translateY(30px); /* Slide-up start */
-    transition: all 0.6s ease-out; /* Smooth entrance */
+    font-size: 3.4rem; /* Large, powerful title */
+    font-weight: 900; /* Extremely bold for clarity */
+    text-align: center; /* Center the heading */
+    color: #ffffff; /* Pure white for contrast */
+    margin-bottom: 25px; /* Spacing below heading */
+    text-shadow: 
+        1px 2px 8px rgba(0, 0, 0, 0.7), /* Subtle primary shadow */
+        0 0 20px rgba(0, 0, 0, 0.5);    /* Soft outer glow */
+    letter-spacing: 1.3px; /* Premium spacing between letters */
+    line-height: 1.2; /* Tight line height */
+    opacity: 0; /* Hidden initially for scroll animation */
+    transform: translateY(40px); /* Slide-up start position */
+    transition: all 0.7s ease-out; /* Smooth transition */
+    -webkit-transition: all 0.7s ease-out;
+    -moz-transition: all 0.7s ease-out;
+    -ms-transition: all 0.7s ease-out;
+    -o-transition: all 0.7s ease-out;
 }
 
-/* Subtitle for main heading */
+/* Subtitle */
 .section-title .subtitle {
     display: block;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 500;
-    color: #045a04;
-    margin-top: 10px;
+    color: #b7ffb7;                              /* Softer glowing green */
+    margin-top: 12px;
+
+    text-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.85),
+        0 0 20px rgba(0, 0, 0, 0.6);
 }
 
-/* Animate heading on scroll */
+/* Scroll animation */
 .section-title.animate {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Notice paragraph */
+/* =================== PREMIUM NOTICE TEXT =================== */
 .notice {
     text-align: center;
-    font-size: 1rem;
-    color: #a00;
-    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: #ffe5e5;                               /* Warm and readable tone */
+    margin-bottom: 50px;
+
+    text-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.85),
+        0 0 15px rgba(0, 0, 0, 0.6);
+
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-out;
+    transform: translateY(25px);
+    transition: all 0.7s ease-out;
 }
 
 .notice.animate {
@@ -142,7 +188,8 @@ body {
     font-size: 2rem;
     font-weight: 800;
     text-align: center;
-    color: #045a04;
+    color: white;
+    text-shadow: 1px 4px 12px rgb(0, 8, 1), 0 0 25px rgba(0, 0, 0, 0.7), 0 0 60px rgba(0, 0, 0, 0.5);
     margin-bottom: 30px;
     opacity: 0;
     transform: translateY(30px);
