@@ -1,0 +1,215 @@
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Make width/height consistent */
+    font-family: 'Arial', sans-serif; /* Default font */
+}
+
+/* ===========================
+   GLOBAL PAGE CONTROL
+=========================== */
+html, body {
+    height: 100%; /* Full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow natural scrolling */
+}
+
+/* ===========================
+   BACKGROUND SLIDESHOW
+=========================== */
+body {
+    background-position: center; /* Keep images centered */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-size: cover; /* Fill screen */
+    background-size: 100% 100%; /* Stretch to fit */
+    animation: bgSlide 10s infinite alternate ease-in-out; /* Switch images */
+}
+
+/* Background animation */
+@keyframes bgSlide {
+    0% { background-image: url("pictures/open_area_cleaning1.png"); }
+    100% { background-image: url("pictures/open_area_cleaning2.png"); }
+}
+
+/* ===========================
+   PAGE WRAPPER
+=========================== */
+.page-wrapper {
+    min-height: 100vh; /* Full page */
+    width: 100%; /* Full width */
+    display: flex; /* Flex container */
+    flex-direction: column; /* Vertical stacking */
+    align-items: center; /* Center horizontally */
+    padding: 120px 20px 40px 20px; /* Space for fixed button */
+}
+
+/* ===========================
+   BACK BUTTON (Home / Back)
+=========================== */
+.back-btn {
+    position: fixed; /* Always visible */
+    top: 20px; /* Space from top */
+    right: 20px; /* Space from right */
+    background: rgba(97, 9, 9, 0.8); /* Glass white background */
+    backdrop-filter: blur(12px); /* True glass effect */
+    padding: 12px 20px; /* Button size */
+    border-radius: 10px; /* Smooth corners */
+    color: rgb(243, 238, 238); /* Text color */
+    font-weight: 800; /* Bold */
+    text-decoration: none; /* Remove underline */
+    border: 2px solid rgba(255, 255, 255, 0.7); /* White border */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.20); /* Soft shadow */
+    z-index: 1000; /* Above everything */
+    transition: 0.3s ease; /* Smooth hover */
+}
+
+/* Hover effect */
+.back-btn:hover {
+    background: rgb(10, 63, 8); /* Solid maroon on hover */
+    color: #fff; /* Text turns white */
+    transform: translateY(-2px); /* Small lift */
+}
+
+/* ===========================
+   PAGE TITLE
+=========================== */
+.row-h3 {
+    width: 100%; /* Full width */
+    text-align: center; /* Center text */
+    margin-bottom: 25px; /* Spacing */
+}
+
+.row-h3 h2 {
+    display: inline-block; /* Shrink to content */
+    padding: 12px 25px; /* Inner spacing */
+    background: rgba(30, 126, 52, 0.70); /* Green glass */
+    color: #fff; /* Title color */
+    font-weight: 900; /* Extra bold */
+    border-radius: 10px; /* Soft corners */
+    font-size: clamp(1.6rem, 4vw, 2.8rem); /* Responsive title */
+    letter-spacing: 1px; /* Spacing */
+    text-shadow: 0 4px 12px rgba(0,0,0,0.9); /* Glow for visibility */
+    animation: fadeSlideDown 0.9s ease-out; /* Animation */
+}
+
+/* ===========================
+   SERVICE BOX
+=========================== */
+.row {
+    width: 90%; /* Responsive width */
+    max-width: 800px; /* Limit width */
+    padding: 35px 30px; /* Inner spacing */
+    background: rgba(255, 255, 255, 0.75); /* Glass white box */
+    border-radius: 20px; /* Smooth corners */
+    box-shadow: 
+        0 6px 18px rgba(0,0,0,0.15),
+        0 12px 35px rgba(0,0,0,0.10); /* Soft shadows */
+    animation: fadeIn 0.8s ease-out; /* Fade in */
+}
+
+.row h3 {
+    text-align: center; /* Center heading */
+    font-size: 2rem; /* Title size */
+    font-weight: 900; /* Bold */
+    color: #052905; /* Dark green */
+    margin-bottom: 15px; /* Space below */
+    text-shadow: 1px 2px whitesmoke; /* Light highlight */
+}
+
+.row p {
+    text-align: center; /* Center text */
+    font-size: 1rem; /* Readable size */
+    color: #3b3a3a; /* Dark grey */
+    line-height: 1.6; /* Good spacing */
+    margin-bottom: 15px;
+}
+
+.row p em {
+    font-style: italic; /* Italic */
+    color: #6c4a1e; /* Brown */
+}
+
+/* Price badge */
+.price strong {
+    display: inline-block; /* Fit to content */
+    background: #25D366; /* WhatsApp green */
+    color: white; /* White text */
+    padding: 8px 18px; /* Padding */
+    border-radius: 8px; /* Rounded */
+    font-weight: 900; /* Bold */
+    font-size: 1.1rem; /* Size */
+}
+
+/* ===========================
+   FLOATING WHATSAPP BUTTON
+=========================== */
+.whatsapp-float {
+    position: fixed; /* Stay on screen */
+    bottom: 22px; /* From bottom */
+    right: 22px; /* From right */
+    width: clamp(55px, 10vw, 65px); /* Responsive */
+    height: clamp(55px, 10vw, 65px);
+    background: #25D366; /* WhatsApp green */
+    border-radius: 50%; /* Circle */
+    display: flex; /* Center content */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.30); /* Deep shadow */
+    transition: 0.3s ease; /* Smooth hover */
+    z-index: 999;
+}
+
+.whatsapp-float img {
+    width: 60%; /* Icon width */
+    height: 60%; /* Icon height */
+    object-fit: contain; /* Keep ratio */
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08) translateY(-3px); /* Lift on hover */
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   RESPONSIVE BREAKPOINTS
+=========================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .row { padding: 30px 25px; }
+    .row h3 { font-size: 1.7rem; }
+    .row-h3 h2 { font-size: 2rem; }
+}
+
+/* Medium phones */
+@media (max-width: 600px) {
+    .page-wrapper { padding-top: 100px; }
+    .row { padding: 25px 20px; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .row-h3 h2 { font-size: 1.5rem; padding: 8px 12px; }
+    .row h3 { font-size: 1.4rem; }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+    .row { padding: 18px 12px; }
+    .whatsapp-float { bottom: 18px; right: 18px; }
+}

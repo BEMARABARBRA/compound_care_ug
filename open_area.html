@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Open Area Cleaning</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="open_area.css" rel="stylesheet">
-    </head>
-    <body>
+<head>
+    <title>Open Area Cleaning</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="open_area.css" rel="stylesheet">
+</head>
+<body>
 
-        <div class="row">
-            <h3> OPEN AREA CLEANING SERVICES </h3>
+<div class="page-wrapper">   <!-- ✅ ADDED WRAPPER -->
 
-            <div class="col">
-                <h3>Clean-Up & Disposal Services</h3>
-                <p>Efficiently collect and remove leaves, branches, litter, and post-event waste. Includes sweeping, clearing hazards, and proper disposal,leaving your compound spotless, safe, and ready for use.</p>
-                <p><strong>Cost: 700 per sqm</strong></p>
-            </div>
-          </div>
+    <a href="index.html" class="back-btn">Home</a>
 
-    </body>
+    <div class="row-h3">
+        <h2>OPEN AREA CLEANING SERVICES</h2>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <h3>Clean-Up & Disposal Services</h3>
+            <p>
+                Efficiently collect and remove leaves, branches, litter, and post-event waste. 
+                Includes sweeping, clearing hazards, and proper disposal, leaving your compound 
+                spotless, safe, and ready for use.
+            </p> <br>
+            <p> <em> Disposal of cut grass is not included. Clients must provide a suitable dumping area. </em></p>
+            <p class="price"><strong>UGX 700 / sqm (pre-booking required)</strong></p>
+        </div>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/256777657427?text=Hello,%20I%20am%20interested%20in%20your%20services." 
+       class="whatsapp-float" target="_blank" rel="noopener">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp Chat">
+    </a>
+
+</div> <!-- END WRAPPER -->
+
+<!-- ===================== WhatsApp click script ================= -->
+<script>
+    const whatsappNumber = "256777657427";
+
+    const serviceSections = document.querySelectorAll(".col");
+
+    serviceSections.forEach(section => {
+        section.addEventListener("click", () => {
+
+            const serviceName = section.querySelector("h3").innerText;
+            const description = section.querySelector("p").innerText;
+            const cost = section.querySelector("strong").innerText;
+
+            const message = encodeURIComponent(
+                `Hello Compound Care Uganda,\n\nI am interested in the following service:\n\nService: ${serviceName}\nDescription: ${description}\nCost: ${cost}\n\nPlease assist me with booking.`
+            );
+
+            const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+            window.open(url, "_blank");
+        });
+    });
+</script>
+
+</body>
 </html>

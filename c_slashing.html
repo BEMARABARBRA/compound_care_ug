@@ -9,6 +9,8 @@
 
 <body>
 
+    <a href="index.html" class="back-btn">Home</a>
+
     <section class="slashing-section">
 
         <!-- Heading -->
@@ -19,28 +21,28 @@
 
         <!-- Notice -->
         <p class="notice" data-animate>
-            This service does not include disposal of cut grass. Client must provide a dumping area.
+            Disposal of cut grass is not included. Clients must provide a suitable dumping area.
         </p>
 
         <!-- Mowing Services -->
         <div class="price-grid">
 
             <div class="price-card" data-animate>
-                <h3>Normal Grass</h3>
-                <p>Short to medium height grass, usually below the knee.</p>
-                <button class="price-btn">UGX 500 / sqm</button>
+                <h3><h3>Normal Grass</h3>
+                <p>Short to medium-height grass, approximately <strong>5 cm – 30 cm</strong> tall.</p>
+                <button class="price-btn">UGX 500 / sqm (pre-booking required)</button>
             </div>
 
             <div class="price-card" data-animate>
                 <h3>Overgrown Grass</h3>
-                <p>Taller grass above knee height, sometimes reaching the waist.</p>
-                <button class="price-btn">UGX 550 / sqm</button>
+                <p>Tall grass, approximately <strong>30 cm – 70 cm</strong> in height.</p>
+                <button class="price-btn">UGX 550 / sqm (pre-booking required)</button>
             </div>
 
             <div class="price-card" data-animate>
                 <h3>Tough Weeds / Bushy Grass</h3>
-                <p>Elephant grass or bush-like weeds with thick stems.</p>
-                <button class="price-btn">UGX 650 / sqm</button>
+                <p>Dense, robust weeds or elephant grass with thick stems, approximately <strong>70 cm – 200 cm</strong> tall.</p>
+                <button class="price-btn">UGX 650 / sqm (pre-booking required)</button>
             </div>
 
         </div>
@@ -48,24 +50,33 @@
         <!-- Add-On Services (now matching mowing design) -->
         <h2 class="addons-title" data-animate>Lawn (Compound) Care Add-Ons</h2>
 
-        <div class="price-grid">
+        <div class="price-grid addons">
+
 
             <div class="price-card" data-animate>
                 <h3>Edging & Shaping Borders</h3>
-                <p>Sharp and clean lawn edge shaping for a modern look.</p>
-                <button class="price-btn">UGX 200 / sqm</button>
+                <p>Sharp, clean lawn edges for a neat and modern appearance.</p>
+                <button class="price-btn">UGX 200 / sqm (pre-booking required)</button>
             </div>
 
             <div class="price-card" data-animate>
                 <h3>Weed Control Treatment</h3>
-                <p>Chemical or manual removal of weeds to maintain clean lawns.</p>
-                <button class="price-btn">UGX 250 / sqm</button>
+                <p>Manual or chemical removal of weeds to keep lawns clean and healthy.</p>
+                <button class="price-btn">UGX 250 / sqm (pre-booking required)</button>
             </div>
 
         </div>
 
     </section>
 
+    <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/256777657427?text=Hello,%20I%20am%20interested%20in%20your%20services." 
+        class="whatsapp-float" target="_blank" rel="noopener">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp Chat">
+        </a>
+
+
+    <!-- =========== javascript============= -->
     <!-- Scroll Animation Script -->
     <script>
         const animateElements = document.querySelectorAll("[data-animate]");
@@ -76,6 +87,34 @@
         });
         animateElements.forEach(el => observer.observe(el));
     </script>
+<!-- ===================== for the whatsapp message & price buttons ================= -->
+<script>
+    // WhatsApp number
+    const whatsappNumber = "+256777657427";
+
+    // Select all price buttons
+    const priceButtons = document.querySelectorAll(".price-btn");
+
+    priceButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Get the parent price-card
+            const card = btn.closest(".price-card");
+            // Get the service name and description
+            const serviceName = card.querySelector("h3").innerText;
+            const serviceDesc = card.querySelector("p").innerText;
+            const price = btn.innerText;
+
+            // Construct the WhatsApp message
+            const message = encodeURIComponent(
+                `Hello Compound Care Uganda, I am interested in the following service from your website:\n\nService: ${serviceName}\nDescription: ${serviceDesc}\nPrice: ${price}`
+            );
+
+            // Open WhatsApp in a new tab
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappURL, "_blank");
+        });
+    });
+</script>
 
 </body>
 </html>

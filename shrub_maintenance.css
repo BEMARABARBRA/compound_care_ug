@@ -1,0 +1,197 @@
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* ===========================
+   PAGE SETUP
+=========================== */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* ===========================
+   BACKGROUND SLIDESHOW
+=========================== */
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  /* Keeps images FULL SCREEN */
+    animation: bgSlide 10s infinite alternate ease-in-out;
+}
+
+/* Slideshow animation */
+@keyframes bgSlide {
+    0% { background-image: url("pictures/shrub_maintenance1.png"); }
+    100% { background-image: url("pictures/shrub_maintenance2.png"); }
+}
+
+/* ===========================
+   PAGE WRAPPER
+=========================== */
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 20px 40px 20px;
+}
+
+/* ===========================
+   BACK BUTTON
+=========================== */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(129, 6, 6, 0.7);
+    backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: rgb(241, 237, 237);
+    text-decoration: none;
+    font-weight: 900;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: rgb(14, 90, 20);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   PAGE TITLE
+=========================== */
+.row-h3 h2 {
+    max-width: 800px;        /* Prevents title from exceeding the content box */
+    width: 100%;             /* Makes it responsive */
+    background: rgba(126, 33, 30, 0.7);
+    padding: 12px 25px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.90);
+    animation: fadeSlideDown 0.9s ease-out;
+}
+
+
+/* ===========================
+   MAIN SERVICE BOX
+=========================== */
+.row {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 45px 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow:         0 6px 18px rgba(0,0,0,0.15),        0 12px 35px rgba(0,0,0,0.10);
+    animation: fadeIn 0.8s ease-out;
+    -webkit-animation: fadeIn 0.8s ease-out;
+}
+
+.row h3 {
+    width: 90%;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 900;
+    color: #052905;
+    text-shadow: 1px 2px whitesmoke;
+    margin-bottom: 35px;
+}
+
+
+.row p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #3b3a3a;
+    margin-bottom: 35px;
+}
+
+/* Price badge */
+.price strong {
+    background: #25D366;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+/* ===========================
+   WHATSAPP BUTTON
+=========================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: clamp(55px, 10vw, 65px);
+    height: clamp(55px, 10vw, 65px);
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.30);
+    z-index: 999;
+    transition: 0.3s;
+}
+
+.whatsapp-float img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08) translateY(-3px);
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   RESPONSIVE BREAKPOINTS
+=========================== */
+@media (max-width: 768px) {
+    .row { padding: 30px 25px; }
+}
+
+@media (max-width: 600px) {
+    .page-wrapper { padding-top: 100px; }
+    .row { padding: 25px 20px; }
+}
+
+@media (max-width: 480px) {
+    .row-h3 h2 {
+        font-size: 1.5rem;
+        padding: 8px 12px;
+    }
+    .row h3 { font-size: 1.4rem; }
+}
+
+@media (max-width: 400px) {
+    .row { padding: 18px 12px; }
+}

@@ -14,6 +14,29 @@ body {
     line-height: 1.6; /* Comfortable line spacing */
 }
 
+.back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #680909aa; /* translucent white */
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    border: 1px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+.back-btn:hover {
+    background: #1E7E34;
+    transform: translateY(-2px);
+}
+
+
 /* =================== SLASHING SECTION =================== */
 .slashing-section {
     padding: 60px 20px; /* Section spacing */
@@ -51,23 +74,25 @@ body {
 
 /* =================== PREMIUM HEADING STYLE FOR BACKGROUND IMAGES =================== */
 .section-title {
-    font-size: 3.4rem; /* Large, powerful title */
-    font-weight: 900; /* Extremely bold for clarity */
-    text-align: center; /* Center the heading */
-    color: #ffffff; /* Pure white for contrast */
-    margin-bottom: 25px; /* Spacing below heading */
-    text-shadow: 
-        1px 2px 8px rgba(0, 0, 0, 0.7), /* Subtle primary shadow */
-        0 0 20px rgba(0, 0, 0, 0.5);    /* Soft outer glow */
-    letter-spacing: 1.3px; /* Premium spacing between letters */
-    line-height: 1.2; /* Tight line height */
-    opacity: 0; /* Hidden initially for scroll animation */
-    transform: translateY(40px); /* Slide-up start position */
-    transition: all 0.7s ease-out; /* Smooth transition */
-    -webkit-transition: all 0.7s ease-out;
+    font-size: 3.4rem;
+    /*Large,powerfultitle*/font-weight: 900;
+    /*Extremelyboldforstrongvisibility*/text-align: center;
+    /*Centertheheadingtext*/color: #ffffff;
+    /*Purewhiteformaximumcontrast*/margin-bottom: 25px;
+    /*Spacebelowthetitle*//*Multi-layershadowforaglowinganddeepeffect*/text-shadow:         1px 4px 8px rgb(0, 8, 1),   /* Dark shadow for depth */        0 0 25px rgba(0, 0, 0, 0.7),/* Strong outer glow */        0 0 60px rgba(0, 0, 0, 0.5);
+    /*Softextendedglow*/letter-spacing: 1.3px;
+    /*Slightspacingforapremiumlook*/line-height: 1.2;
+    /*Balancedlinespacing*/opacity: 0;
+    /*Initiallyhiddenforscrollanimation*/transform: translateY(40px);
+    /*Startsslightlylowered(slide-upeffect)*/transition: all 0.7s ease-out;
+    /*Smoothrevealanimation*//*Cross-browsercompatibilityfortransitions*/-webkit-transition: all 0.7s ease-out;
     -moz-transition: all 0.7s ease-out;
     -ms-transition: all 0.7s ease-out;
     -o-transition: all 0.7s ease-out;
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
 }
 
 /* Subtitle */
@@ -120,13 +145,23 @@ body {
 
 /* Center add-ons when only two cards */
 .price-grid.addons {
-    justify-content: center; /* Center two add-on cards */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexible */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
 }
+
+/* .price-grid.addons .price-card {
+    width: 300px;
+    max-width: 100%;
+} */
+
 
 /* Price card styling */
 .price-card {
-    background: linear-gradient(135deg, #ffffff 0%, #e9f5e9 100%); /* Subtle gradient */
+    background: rgba(255, 255, 255, 0.6); /* 70% visibility */
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 6px 25px rgba(0,0,0,0.08);
@@ -140,6 +175,10 @@ body {
 .price-card.animate {
     opacity: 1;
     transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
 }
 
 /* Card hover effect */
@@ -151,14 +190,15 @@ body {
 /* Card heading */
 .price-card h3 {
     font-size: 1.6rem;
-    color: #073107;
+    color: #012701;
+    text-shadow: 1px 1px whitesmoke;
     margin-bottom: 12px;
 }
 
 /* Card description */
 .price-card p {
     font-size: 1rem;
-    color: #555;
+    color: #3b3a3a;
     margin-bottom: 20px;
 }
 
@@ -189,7 +229,7 @@ body {
     font-weight: 800;
     text-align: center;
     color: white;
-    text-shadow: 1px 4px 12px rgb(0, 8, 1), 0 0 25px rgba(0, 0, 0, 0.7), 0 0 60px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 4px  rgb(0, 8, 1), 0 0 25px rgba(0, 0, 0, 0.7), 0 0 60px rgba(0, 0, 0, 0.5);
     margin-bottom: 30px;
     opacity: 0;
     transform: translateY(30px);
@@ -199,6 +239,34 @@ body {
 .addons-title.animate {
     opacity: 1;
     transform: translateY(0);
+}
+
+
+/* =================== FLOATING WHATSAPP BUTTON =================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366; /* WhatsApp green */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* =================== RESPONSIVE DESIGN =================== */

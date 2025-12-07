@@ -630,6 +630,32 @@ nav {
         align-items: center; /* Center cards */
     } 
 } 
+/* =================== FLOATING WHATSAPP BUTTON =================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366; /* WhatsApp green */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
 
 /* =================== FOOTER ==================== */ /* Footer section label */
 
@@ -647,6 +673,7 @@ nav {
     margin-top: auto; /* Push footer to bottom if page content is short */
 } 
 
+
 /* Main footer row layout using flexbox */ 
 .footer .row { 
     display: flex; /* Flex layout for columns */
@@ -662,32 +689,44 @@ nav {
 
 /* Footer logo wrapper */ 
 .footer .footer-logo { 
-    padding-left: 20px; /* Padding for logo */
-    width: 150px; /* Fixed width */
-    display: flex; /* Flex container */
-    flex-direction: column; /* Stack logo and heading vertically */
-    align-items: center; /* Center logo horizontally */
-    margin: 0; /* Remove default margin */
-} 
+    padding-left: 20px;       /* Padding for logo */
+    width: 200px;             /* Slightly wider for larger text */
+    display: flex;            /* Flex container */
+    flex-direction: column;   /* Stack logo and heading vertically */
+    align-items: center;      /* Center logo horizontally */
+    margin: 0;                /* Remove default margin */
+}
 
 /* Footer logo heading style */ 
 .footer .footer-logo h4 { 
-    color: #fff; /* White text */
-    font-size: 20px; /* Heading size */
-    letter-spacing: 1px; /* Spacing between letters */
-    font-weight: 700; /* Bold */
-    margin: 10px 0 8px 0; /* Top and bottom spacing */
-    text-align: center; /* Center text */
-} 
+    color: #fff;              /* White text */
+    font-size: 19px;          /* Larger heading size */
+    text-wrap: nowrap;
+    letter-spacing: 2px;      /* Spacing between letters */
+    font-weight: 900;         /* Extra bold */
+    margin-top: 35px;    /* Top and bottom spacing */
+    text-align: center;       /* Center text */
+    text-shadow: 1px 2px black;
+    text-transform: uppercase;/* Make it look more like a logo */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover */
+}
+
+/* Optional hover effect for heading */
+.footer .footer-logo h4:hover {
+    color: #660d0a;           /* Change color on hover */
+    text-shadow: 1px 2px 4px rgba(255, 255, 255, 0.3); /* Subtle glow */
+    text-wrap: normal;      /* Normal text wrap */
+    transform: scale(1.1);    /* Slightly enlarge */
+}
 
 /* Footer logo image sizing */ 
 .footer .footer-logo img { 
-    width: 100%; /* Take full width of wrapper */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Block element */
-    margin: 0 auto; /* Center horizontally */
-    border-radius: 8px; /* Rounded corners */
-} 
+    width: 90%;              /* Take full width of wrapper */
+    height: auto;             /* Maintain aspect ratio */
+    display: block;           /* Block element */
+    margin: 0 auto;           /* Center horizontally */
+    border-radius: 8px;       /* Rounded corners */
+}
 
 /* Footer headings style for other columns */ 
 .footer h4 { 
