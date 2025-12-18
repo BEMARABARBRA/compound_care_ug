@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive design -->
+    <title>Gardening & Pruning Services</title> <!-- Page title -->
+    <link rel="stylesheet" href="gardening.css"> <!-- Link to CSS file -->
+</head>
+<body>
+
+<!-- =========================
+   BACKGROUND SLIDESHOW
+=========================== -->
+<div class="background-slideshow"></div>
+
+
+    <!-- Overlay layer -->
+    <div class="background-overlay"></div>
+
+<!-- =========================
+   PAGE WRAPPER
+=========================== -->
+<div class="page-wrapper">
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">Home</a>
+
+    <!-- =========================
+       SECTION: Garden Setup
+    =========================== -->
+    <section class="section">
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <h2>Garden Setup & Maintenance Services</h2>
+            <p class="underline">We create, establish, and maintain gardens to ensure healthy plant growth, clean structure, and lasting beauty.</p>
+        </div>
+
+        <!-- SERVICE CARD -->
+        <div class="service-card">
+            <h3>Garden Setup (New or Redesign Projects)</h3>
+            <ul>
+                <li>Garden layout planning</li>
+                <li>Plant placement and spacing</li>
+                <li>Soil preparation and bed formation</li>
+                <li>Initial shaping and corrective pruning</li>
+                <li>Visual balance and aesthetic finishing</li>
+            </ul>
+            <p><em>Ideal for new properties, renovations, and neglected garden spaces.</em></p>
+            <p><strong>Note:</strong> Applies to prepared or lightly vegetated spaces. Extensive clearing of dense shrubs or bushy plants is quoted separately after a site assessment.</p>
+            <p class="price">UGX 35,000 – 60,000 / sqm (pre-booking required)</p>
+        </div>
+    </section>
+
+    <!-- =========================
+       SECTION: Ongoing Garden Maintenance
+    =========================== -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Ongoing Garden Maintenance (Plant-Focused)</h2>
+            <p class="underline">Prices fixed per plant based on height. Exact work may vary depending on plant type, density, health, and accessibility.</p>
+        </div>
+
+        <!-- GRID OF SERVICE CARDS -->
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>Plants up to 0.5 m (50 cm)</h3>
+                <p>Light pruning, growth guidance, and removal of weak or dead growth.</p>
+                <p class="price">UGX 3,000 per plant per visit</p>
+            </div>
+            <div class="service-card">
+                <h3>Plants 0.5 m – 1 m</h3>
+                <p>Structured pruning, shape correction, and plant health monitoring.</p>
+                <p class="price">UGX 5,000 per plant per visit</p>
+            </div>
+            <div class="service-card">
+                <h3>Plants 1 m – 2 m</h3>
+                <p>Growth control, aesthetic rebalancing, and plant rejuvenation.</p>
+                <p class="price">UGX 8,000 per plant per visit</p>
+            </div>
+            <div class="service-card">
+                <h3>Plants above 2 m (Non-Tree Only)</h3>
+                <p>Controlled height management and decorative screening care.</p>
+                <p class="price">UGX 12,000 per plant per visit</p>
+            </div>
+        </div>
+
+        <!-- SERVICE NOTE -->
+        <p class="note">This service covers garden plants and decorative greenery only. Tree cutting, tree trimming, hedge maintenance, and compound slashing are <strong>not included.</strong></p>
+    </section>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/256777657427?text=Hello,%20I%20am%20interested%20in%20your%20services." 
+       class="whatsapp-float" target="_blank" rel="noopener">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp Chat">
+    </a>
+
+</div> <!-- END PAGE WRAPPER -->
+
+<!-- =========================
+   WHATSAPP SCRIPT
+=========================== -->
+<script>
+    const whatsappNumber = "256777657427";
+
+    // Add click event to every service card
+    document.querySelectorAll(".service-card").forEach(card => {
+        card.addEventListener("click", () => {
+            const serviceName = card.querySelector("h3").innerText;
+            const description = card.querySelector("p").innerText;
+            const cost = card.querySelector(".price").innerText;
+
+            const message = encodeURIComponent(
+                `Hello Compound Care Uganda,\n\nI am interested in the following service:\n\nService: ${serviceName}\nDescription: ${description}\nCost: ${cost}\n\nPlease assist me with booking.`
+            );
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+        });
+    });
+</script>
+
+</body>
+</html>

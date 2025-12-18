@@ -1,0 +1,273 @@
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+    margin: 0; /* Remove default browser margins */
+    padding: 0; /* Remove default browser padding */
+    box-sizing: border-box; /* Ensure padding & borders are included in size */
+    font-family: Arial, sans-serif; /* Global default font */
+}
+
+/* ===========================
+   BODY SETTINGS
+=========================== */
+body {
+    width: 100%; /* Full viewport width */
+    min-height: 100vh; /* Ensure body always fills screen height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: #010c05; /* Fallback background color */
+    position: relative; /* Needed for layering elements */
+}
+
+/* ===========================
+   BACKGROUND SLIDESHOW
+=========================== */
+.background-slideshow {
+    position: fixed; /* Keep background stationary */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    z-index: -2; /* Lowest layer */
+    background-size: cover; /* Scale image to cover screen */
+    background-position: center; /* Center background image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    animation: slideshow 18s infinite; /* Faster, smoother rotation */
+}
+
+/* Background image rotation */
+@keyframes slideshow {
+    0%   { background-image: url("pictures/matooke_garden.jpeg"); } /* Image 1 */
+    33%  { background-image: url("pictures/cabbage_garden.jpeg"); } /* Image 2 */
+    66%  { background-image: url("pictures/cassava_garden.jpeg"); } /* Image 3 */
+    100% { background-image: url("pictures/banana_garden.jpeg"); } /* Image 4 */
+}
+
+/* ===========================
+   BACKGROUND OVERLAY (ANTI-CONFLICT LAYER)
+=========================== */
+.background-overlay {
+    position: fixed; /* Overlay stays fixed */
+    top: 0; /* Start from top */
+    left: 0; /* Start from left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background: rgba(2, 59, 24, 0.55); /* Dark green transparent layer */
+    z-index: -1; /* Above background, below content */
+}
+
+/* ===========================
+   PAGE WRAPPER
+=========================== */
+.page-wrapper {
+    max-width: 1200px; /* Limit content width on large screens */
+    margin: auto; /* Center horizontally */
+    padding: 120px 20px 40px; /* Space from top & sides */
+    display: flex; /* Enable flex layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center content */
+    position: relative; /* Required for z-index */
+    z-index: 1; /* Ensure content appears above overlay */
+}
+
+/* ===========================
+   BACK BUTTON
+=========================== */
+.back-btn {
+    position: fixed; /* Always visible */
+    top: 20px; /* Distance from top */
+    right: 20px; /* Distance from right */
+    padding: 12px 20px; /* Button padding */
+    font-size: 1rem; /* Text size */
+    font-weight: bold; /* Bold text */
+    color: #ffffff; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 12px; /* Rounded edges */
+    background: rgba(109, 8, 8, 0.9); /* Transparent maroon */
+    backdrop-filter: blur(8px); /* Glass blur effect */
+    border: 1px solid rgba(255,255,255,0.2); /* Subtle border */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3); /* Depth shadow */
+    transition: all 0.3s ease; /* Smooth animation */
+    z-index: 1000; /* Above everything */
+}
+
+/* Back button hover */
+.back-btn:hover {
+    background: rgba(9, 83, 31, 0.85); /* Darker maroon */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* ===========================
+   SECTION CONTAINER
+=========================== */
+.section {
+    width: 100%; /* Full width */
+    margin-bottom: 50px; /* Space between sections */
+}
+
+/* ===========================
+   SECTION HEADER
+=========================== */
+.section-header {
+    text-align: center; /* Center text */
+    margin-bottom: 30px; /* Space below header */
+}
+
+/* Section title */
+.section-header h2 {
+    display: inline-block; /* Wrap content */
+    padding: 12px 25px; /* Inner spacing */
+    background: rgba(0,0,0,0.55); /* Dark glass background */
+    color: #ffffff; /* White text */
+    border-radius: 12px; /* Rounded corners */
+    font-size: clamp(1.6rem, 4vw, 2.4rem); /* Responsive font size */
+    font-weight: 900; /* Heavy weight */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5); /* Text clarity */
+}
+
+/* Section description */
+.section-header p {
+    margin-top: 15px; /* Space above text */
+    font-size: 1.2rem; /* Readable size */
+    color: #eaeaea; /* Soft white */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* Improve readability */
+}
+
+/* Decorative underline */
+.underline {
+    display: inline-block; /* Fit to content */
+    border-bottom: 2px solid #c9dfc9; /* Light green line */
+    padding-bottom: 12px; /* Space above line */
+}
+
+/* ===========================
+   SERVICE CARDS GRID
+=========================== */
+.service-cards {
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Responsive columns */
+    gap: 25px; /* Space between cards */
+    width: 100%; /* Full width */
+}
+
+/* ===========================
+   SERVICE CARD
+=========================== */
+.service-card {
+    background: rgba(0,0,0,0.45); /* Dark glass background */
+    backdrop-filter: blur(8px); /* Glass blur */
+    border-radius: 20px; /* Rounded corners */
+    padding: 25px; /* Inner spacing */
+    color: #ffffff; /* White text */
+    text-align: center; /* Center content */
+    cursor: pointer; /* Clickable */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35); /* Depth */
+    transition: all 0.3s ease; /* Smooth hover */
+}
+
+/* Card hover effect */
+.service-card:hover {
+    transform: translateY(-6px); /* Lift */
+    box-shadow: 0 14px 32px rgba(0,0,0,0.5); /* Strong shadow */
+}
+
+/* Card heading */
+.service-card h3 {
+    background: rgba(0,0,0,0.5); /* Dark label background */
+    padding: 12px 18px; /* Padding */
+    border-radius: 14px; /* Rounded label */
+    font-size: 1.25rem; /* Title size */
+    font-weight: 800; /* Bold */
+    margin-bottom: 15px; /* Space below */
+}
+
+/* Card text */
+.service-card p,
+.service-card ul {
+    font-size: 1rem; /* Base size */
+    margin-bottom: 15px; /* Spacing */
+}
+
+/* Bullet list */
+.service-card ul {
+    list-style: disc; /* Bullet points */
+    padding-left: 20px; /* Indentation */
+    text-align: left; /* Left align */
+}
+
+/* Price badge */
+.service-card .price {
+    display: inline-block; /* Fit content */
+    padding: 10px 20px; /* Padding */
+    background: #115c2c; /* Deep green */
+    color: #ffffff; /* White text */
+    border-radius: 10px; /* Rounded */
+    font-weight: 800; /* Bold */
+}
+
+/* ===========================
+   NOTES
+=========================== */
+.note {
+    margin-top: 20px; /* Space above */
+    text-align: center; /* Center text */
+    font-style: italic; /* Italic */
+    color: #f5f2f2; /* White */
+    text-shadow: 1px 2px rgba(14, 13, 13, 0.6); /* Readability */
+    background-color: rgba(75, 3, 3, 0.6) ;
+    padding: 15px 10px;
+    border-radius: 8px;
+}   
+
+/* ===========================
+   WHATSAPP FLOATING BUTTON
+=========================== */
+.whatsapp-float {
+    position: fixed; /* Always visible */
+    bottom: 22px; /* From bottom */
+    right: 22px; /* From right */
+    width: 60px; /* Size */
+    height: 60px; /* Size */
+    background: #25D366; /* WhatsApp green */
+    border-radius: 50%; /* Circle */
+    display: flex; /* Flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* Depth */
+    transition: transform 0.3s ease; /* Smooth hover */
+    z-index: 999; /* Above content */
+}
+
+/* WhatsApp icon */
+.whatsapp-float img {
+    width: 60%; /* Icon size */
+    height: 60%; /* Icon size */
+}
+
+/* WhatsApp hover */
+.whatsapp-float:hover {
+    transform: scale(1.1); /* Enlarge slightly */
+}
+
+/* ===========================
+   RESPONSIVE BREAKPOINTS
+=========================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .page-wrapper { padding-top: 100px; } /* Reduce top padding */
+    .service-card { padding: 20px; } /* Smaller cards */
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    .back-btn { padding: 8px 14px; font-size: 0.9rem; } /* Smaller button */
+    .section-header h2 { font-size: 1.5rem; } /* Smaller headers */
+    .whatsapp-float { width: 50px; height: 50px; } /* Smaller WhatsApp */
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+    .service-card p,
+    .service-card ul { font-size: 0.85rem; } /* Smaller text */
+}

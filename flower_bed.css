@@ -1,0 +1,171 @@
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Include padding in width */
+    font-family: Arial, sans-serif; /* Clean readable font */
+}
+
+/* ===========================
+   BODY
+=========================== */
+body {
+    min-height: 100vh; /* Full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    background: #081b10; /* Fallback color */
+}
+
+/* ===========================
+   BACKGROUND SLIDESHOW
+=========================== */
+.background-slideshow {
+    position: fixed; /* Stay behind content */
+    inset: 0; /* Cover full screen */
+    background-image: url("pictures/flowerbed_wall.jpeg"); /* Background image */
+    background-size: cover; /* Fill screen */
+    background-position: center; /* Center image */
+    z-index: -2; /* Behind everything */
+}
+
+/* ===========================
+   BACKGROUND OVERLAY
+=========================== */
+.background-overlay {
+    position: fixed; /* Fixed overlay */
+    inset: 0; /* Full screen */
+    background: rgba(0, 0, 0, 0.55); /* Dark overlay */
+    z-index: -1; /* Above background */
+}
+
+/* ===========================
+   PAGE WRAPPER
+=========================== */
+.page-wrapper {
+    max-width: 1200px; /* Limit width */
+    margin: auto; /* Center content */
+    padding: 100px 20px 40px; /* Spacing */
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.section-header {
+    text-align: center; /* Center text */
+    margin-bottom: 50px; /* Space below */
+}
+
+.section-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem); /* Responsive heading */
+    color: #fff; /* White text */
+    font-weight: 900; /* Bold */
+    margin-bottom: 15px; /* Space */
+}
+
+.section-header p {
+    color: #e6e6e6; /* Soft white */
+    font-size: 1.1rem; /* Comfortable size */
+}
+
+/* Underline effect */
+.underline {
+    border-bottom: 3px solid #9fd3a4; /* Soft green line */
+    display: inline-block; /* Fit text */
+    padding-bottom: 10px; /* Space */
+}
+
+/* ===========================
+   SERVICE GRID
+=========================== */
+.service-cards {
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
+    gap: 30px; /* Space between cards */
+}
+
+/* ===========================
+   SERVICE CARD
+=========================== */
+.service-card {
+    background: rgba(255, 255, 255, 0.08); /* Glass effect */
+    backdrop-filter: blur(10px); /* Blur background */
+    border-radius: 20px; /* Rounded corners */
+    padding: 30px; /* Inner space */
+    color: #fff; /* White text */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35); /* Depth */
+    transition: transform 0.3s ease; /* Smooth hover */
+}
+
+/* Hover effect */
+.service-card:hover {
+    transform: translateY(-6px); /* Lift */
+}
+
+/* Card headings */
+.service-card h3 {
+    font-size: 1.4rem; /* Heading size */
+    margin-bottom: 15px; /* Space */
+}
+
+/* Price badge */
+.price {
+    background: #1f6b3c; /* Green */
+    display: inline-block; /* Fit content */
+    padding: 10px 18px; /* Space */
+    border-radius: 10px; /* Rounded */
+    font-weight: 800; /* Bold */
+    margin-bottom: 15px; /* Space */
+}
+
+/* List */
+.service-card ul {
+    margin: 15px 0; /* Space */
+    padding-left: 20px; /* Indent */
+}
+
+/* List items */
+.service-card li {
+    margin-bottom: 8px; /* Space */
+    line-height: 1.4; /* Readability */
+}
+
+/* Muted text */
+.muted {
+    opacity: 0.85; /* Softer */
+    font-size: 0.95rem; /* Slightly smaller */
+}
+
+/* Notes */
+.note {
+    margin-top: 15px; /* Space */
+    font-style: italic; /* Italic */
+    font-size: 0.95rem; /* Size */
+}
+
+/* Warning card */
+.warning {
+    background: rgba(128, 0, 0, 0.25); /* Maroon tint */
+}
+
+/* ===========================
+   RESPONSIVE ADJUSTMENTS
+=========================== */
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: 80px 15px 30px; /* Reduce spacing */
+    }
+    .service-card {
+        padding: 25px; /* Smaller padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card h3 {
+        font-size: 1.25rem; /* Smaller headings */
+    }
+    .price {
+        font-size: 0.9rem; /* Smaller price */
+        padding: 8px 14px; /* Smaller badge */
+    }
+}

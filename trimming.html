@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="trimming.css">
+    <title>Tree Trimming</title>
+</head>
+
+
+<body>
+
+    <div class="page-wrapper">   <!--  ADDED WRAPPER -->
+        <a href="index.html" class="back-btn">Home</a>
+
+    <div class="section">
+        <h1>TREE TRIMMING</h1>
+        <p><strong>Certified Experts for Tree Health.</strong> We use proven pruning techniques to ensure safety, promote growth, and perfectly shape your trees. Complete cleanup guaranteed.</p>
+        <p><em>Prices include cutting, pruning, and basic debris removal.</em></p>
+        <p><strong>Specialized climbers or crane access will incur additional costs.</strong></p>
+
+    <div class="row-1">
+        <div class="col-sm-3">
+           <p> Small Trees (up to 3m / 10 ft)</p>
+           <a href="#" class="price-btn" data-service="Small Trees" data-price="35,000">
+            UGX 35,000 / Tree (pre-booking required)
+        </a>
+        </div>
+
+        <div class="col-sm-3">
+            <p> Medium Trees (3m – 6m / 10 – 20 ft)</p>
+            <a href="#" class="price-btn" data-service="Medium Trees" data-price="50,000">
+                UGX 50,000 / Tree (pre-booking required)
+            </a>
+        </div>
+
+      </div>
+
+      <div class="row-2">
+        <div class="col-sm-3">
+            <p> Large Trees (6m – 12m / 20 – 40 ft)</p>
+            <a href="#" class="price-btn" data-service="Large Trees" data-price="80,000">
+                UGX 80,000 / Tree (pre-booking required)
+            </a>
+        </div>
+
+        <div class="col-sm-3">
+            <p> Extra-Large Trees / Crane Access (12m+)</p>
+            <a href="#" class="price-btn" data-service="Extra-Large Trees / Crane Access" data-price="450,000">
+                UGX 450,000 / Tree (pre-booking required)
+            </a>
+        </div>
+
+      </div>
+
+    </div>
+
+      <!-- Floating WhatsApp Button -->
+      <a href="https://wa.me/256777657427?text=Hello,%20I%20am%20interested%20in%20your%20services." 
+      class="whatsapp-float" target="_blank" rel="noopener">
+       <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp Chat">
+   </a>
+    
+
+   <!-- =============== js- ============== -->
+   <script>
+    document.querySelectorAll('.price-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+    
+            const service = this.getAttribute('data-service');
+            const price = this.getAttribute('data-price');
+    
+            const message = `Hello, I am interested in ${service} (UGX ${price} per tree).`;
+            const phone = "256777657427";
+    
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    
+            window.open(url, "_blank");
+        });
+    });
+    </script>
+    
+</body>
+</html>
