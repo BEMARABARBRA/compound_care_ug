@@ -14,6 +14,8 @@
 =========================== -->
 <div class="background-slideshow"></div> <!-- Background image container -->
 
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">Home</a>
 <!-- ===========================
      DARK OVERLAY FOR READABILITY
 =========================== -->
@@ -28,7 +30,7 @@
          PAGE HEADER
     =========================== -->
     <header class="section-header">
-        <h2>🌸 Flower Bed Setup & Maintenance</h2> <!-- Main heading -->
+        <h2>Flower Bed Setup & Maintenance</h2> <!-- Main heading -->
         <p class="underline">
             Professional flower bed design, installation, and care for beautiful outdoor spaces.
         </p>
@@ -41,12 +43,10 @@
 
         <!-- Flower Bed Setup -->
         <div class="service-card">
-            <h3>🌸 Flower Bed Setup (New or Redesign)</h3>
-            <p class="price">UGX 15,000 – 25,000 per sqm</p>
-
+            <h3>Flower Bed Setup (New or Redesign)</h3>
             <p class="muted">
                 Pricing depends on soil condition, bed size, and design simplicity.
-            </p>
+            </p><br>
 
             <ul>
                 <li>Basic flower bed layout and shaping</li>
@@ -57,39 +57,81 @@
             </ul>
 
             <p class="note">
-                Ideal for homes, rentals, small offices, and local compounds.
+                Best suited for homes, rentals and small-scale commercial compounds.
                 <br>
                 Plants and materials are quoted separately unless stated otherwise.
-            </p>
+            </p><br>
+
+            <p class="price">UGX 15,000 – 25,000 per sqm</p>
+
         </div>
 
         <!-- Ongoing Maintenance -->
         <div class="service-card">
-            <h3>🌼 Ongoing Flower Bed Maintenance</h3>
-            <p class="price">UGX 3,000 – 5,000 per sqm per visit</p>
+            <h3>Ongoing Flower Bed Maintenance</h3>
+            
 
             <ul>
                 <li>Dead flower removal (deadheading)</li>
                 <li>Light pruning and reshaping</li>
                 <li>Removal of weak or dry plants</li>
                 <li>Maintaining bed cleanliness and neat appearance</li>
-            </ul>
+            </ul> <br>
+            <p class="price">UGX 3,000 – 5,000 per sqm per visit</p>
         </div>
 
         <!-- Service Scope -->
         <div class="service-card warning">
-            <h3>🔒 Service Scope</h3>
-            <p>
-                This service applies strictly to flower beds and flowering plants.
-            </p>
-            <p class="muted">
-                Tree cutting, hedge maintenance, and compound slashing are not included.
-            </p>
+            <!-- <h3>Service Scope</h3> -->
+            <p><em>
+                This service applies strictly to flower beds and flowering plants.Tree cutting and hedge maintenance are not included.
+            </em></p>
         </div>
+
+            <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/256777657427?text=Hello,%20I%20am%20interested%20in%20your%20services." 
+    class="whatsapp-float" target="_blank" rel="noopener">
+     <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp Chat">
+ </a>
 
     </section>
 
 </div>
 
+<!-- ================ javascript =============== -->
+<!-- ===================== for the WhatsApp message & price buttons ================= -->
+<script>
+    // WhatsApp number
+    const whatsappNumber = "256753044293"; // remove '+' for wa.me links
+
+    // Select all price elements
+    const priceButtons = document.querySelectorAll(".price");
+
+    priceButtons.forEach(btn => {
+        btn.style.cursor = "pointer"; // show pointer on hover
+
+        btn.addEventListener("click", () => {
+            // Get the parent service card
+            const card = btn.closest(".service-card");
+
+            // Get the service name (h3) and optional note (p.note or p.muted)
+            const serviceName = card.querySelector("h3")?.innerText || "Service";
+            const serviceDesc = card.querySelector("p.note")?.innerText || 
+                                card.querySelector("p.muted")?.innerText || "No description available";
+            const price = btn.innerText;
+
+            // Construct the WhatsApp message
+            const message = encodeURIComponent(
+                `Hello Compound Care Uganda, I am interested in the following service from your website:\n\nService: ${serviceName}\nDescription: ${serviceDesc}\nPrice: ${price}`
+            );
+
+            // Open WhatsApp in a new tab
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappURL, "_blank");
+        });
+    });
+</script>
+
+    
 </body>
 </html>

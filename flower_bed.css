@@ -2,50 +2,123 @@
    GLOBAL RESET
 =========================== */
 * {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    box-sizing: border-box; /* Include padding in width */
-    font-family: Arial, sans-serif; /* Clean readable font */
+    margin: 0; /* Remove all default margins */
+    padding: 0; /* Remove all default padding */
+    box-sizing: border-box; /* Include padding and border in element's width */
+    font-family: Arial, sans-serif; /* Set a clean, readable font */
 }
 
 /* ===========================
    BODY
 =========================== */
 body {
-    min-height: 100vh; /* Full viewport height */
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    background: #081b10; /* Fallback color */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background: #081b10; /* Dark fallback background */
 }
 
 /* ===========================
    BACKGROUND SLIDESHOW
 =========================== */
 .background-slideshow {
-    position: fixed; /* Stay behind content */
-    inset: 0; /* Cover full screen */
-    background-image: url("pictures/flowerbed_wall.jpeg"); /* Background image */
-    background-size: cover; /* Fill screen */
+    position: fixed; /* Stay behind all content */
+    inset: 0; /* Cover the entire viewport */
+    z-index: -2; /* Behind all content */
+    background-size: cover; /* Cover the container fully */
     background-position: center; /* Center image */
-    z-index: -2; /* Behind everything */
+    animation: slideshow 18s infinite ease-in-out; /* Continuous slideshow */
+}
+
+/* Slideshow keyframes */
+@keyframes slideshow {
+    0% {
+        background-image: url("pictures/flowerbed_wall.jpeg"); /* First image */
+    }
+    33% {
+        background-image: url("pictures/flower_1.jpeg"); /* Second image */
+    }
+    66% {
+        background-image: url("pictures/flower_ring.jpeg"); /* Third image */
+    }
+    100% {
+        background-image: url("pictures/flowerbed_wall.jpeg"); /* Loop back */
+    }
 }
 
 /* ===========================
    BACKGROUND OVERLAY
 =========================== */
 .background-overlay {
-    position: fixed; /* Fixed overlay */
-    inset: 0; /* Full screen */
-    background: rgba(0, 0, 0, 0.55); /* Dark overlay */
-    z-index: -1; /* Above background */
+    position: fixed; /* Fixed overlay to cover entire screen */
+    inset: 0; /* Full width and height */
+    background: rgba(10, 10, 10, 0.60); /* Semi-transparent dark overlay for readability */
+    z-index: -1; /* On top of slideshow but behind content */
+}
+
+/* ===========================
+   BACK BUTTON (Home / Back)
+=========================== */
+.back-btn {
+    position: fixed; /* Always visible */
+    top: 20px; /* Distance from top */
+    right: 20px; /* Distance from right */
+    background: rgba(97, 9, 9, 0.8); /* Semi-transparent maroon background */
+    backdrop-filter: blur(12px); /* Glass blur effect */
+    padding: 12px 20px; /* Space inside button */
+    border-radius: 10px; /* Rounded corners */
+    color: rgb(243, 238, 238); /* Text color */
+    font-weight: 800; /* Bold text */
+    text-decoration: none; /* Remove underline */
+    border: 2px solid rgba(255, 255, 255, 0.7); /* White border for contrast */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.20); /* Soft shadow for depth */
+    z-index: 1000; /* On top of everything */
+    transition: 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for back button */
+.back-btn:hover {
+    background: rgb(10, 63, 8); /* Darker maroon background on hover */
+    color: #fff; /* Text color white on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* ===========================
+   WHATSAPP FLOATING BUTTON
+=========================== */
+.whatsapp-float {
+    position: fixed; /* Always visible */
+    bottom: 22px; /* Distance from bottom */
+    right: 22px; /* Distance from right */
+    width: 60px; /* Button width */
+    height: 60px; /* Button height */
+    background: #25D366; /* WhatsApp green */
+    border-radius: 50%; /* Circular button */
+    display: flex; /* Flexbox to center content */
+    align-items: center; /* Vertical center */
+    justify-content: center; /* Horizontal center */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* Shadow for depth */
+    transition: transform 0.3s ease; /* Smooth hover scaling */
+    z-index: 999; /* On top of page content */
+}
+
+/* WhatsApp icon inside button */
+.whatsapp-float img {
+    width: 60%; /* Icon width relative to button */
+    height: 60%; /* Icon height relative to button */
+}
+
+/* Hover effect for WhatsApp button */
+.whatsapp-float:hover {
+    transform: scale(1.1); /* Slight enlarge on hover */
 }
 
 /* ===========================
    PAGE WRAPPER
 =========================== */
 .page-wrapper {
-    max-width: 1200px; /* Limit width */
-    margin: auto; /* Center content */
-    padding: 100px 20px 40px; /* Spacing */
+    max-width: 1200px; /* Limit content width */
+    margin: auto; /* Center content horizontally */
+    padding: 50px 30px 40px; /* Space around content */
 }
 
 /* ===========================
@@ -53,34 +126,29 @@ body {
 =========================== */
 .section-header {
     text-align: center; /* Center text */
-    margin-bottom: 50px; /* Space below */
+    margin-bottom: 30px; /* Space below header */
 }
 
 .section-header h2 {
-    font-size: clamp(1.8rem, 4vw, 2.6rem); /* Responsive heading */
-    color: #fff; /* White text */
-    font-weight: 900; /* Bold */
-    margin-bottom: 15px; /* Space */
+    font-size: clamp(1.8rem, 4vw, 2.6rem); /* Responsive heading size */
+    color: white; /* White text */
+    text-shadow: 2px 1px 4px black; /* Slight shadow for readability */
+    font-weight: 980; /* Bold heading */
+    margin-bottom: 10px; /* Space below heading */
 }
 
 .section-header p {
-    color: #e6e6e6; /* Soft white */
-    font-size: 1.1rem; /* Comfortable size */
-}
-
-/* Underline effect */
-.underline {
-    border-bottom: 3px solid #9fd3a4; /* Soft green line */
-    display: inline-block; /* Fit text */
-    padding-bottom: 10px; /* Space */
+    color: #e6e6e6; /* Soft white text */
+    font-size: 1.20rem; /* Comfortable paragraph size */
+    margin-bottom: 30px; /* Space below */
 }
 
 /* ===========================
    SERVICE GRID
 =========================== */
 .service-cards {
-    display: grid; /* Grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
+    display: block; /* Grid layout for cards */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
     gap: 30px; /* Space between cards */
 }
 
@@ -88,64 +156,79 @@ body {
    SERVICE CARD
 =========================== */
 .service-card {
-    background: rgba(255, 255, 255, 0.08); /* Glass effect */
-    backdrop-filter: blur(10px); /* Blur background */
+    text-align: center; /* Center text inside card */
+    background: rgba(255, 255, 255, 0.08); /* Semi-transparent glass effect */
+    backdrop-filter: blur(10px); /* Blur background behind card */
     border-radius: 20px; /* Rounded corners */
-    padding: 30px; /* Inner space */
+    padding: 20px; /* Inner spacing */
+    margin-bottom: 30px; /* Space below card */
     color: #fff; /* White text */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35); /* Depth */
-    transition: transform 0.3s ease; /* Smooth hover */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35); /* Card shadow for depth */
+    transition: transform 0.3s ease; /* Smooth hover lift */
 }
 
-/* Hover effect */
+/* Service card list styling */
+.service-card ul {
+    list-style-position: inside; /* Keep bullets close to text */
+    padding: 0; /* Remove default padding */
+    margin: 15px auto; /* Space above/below and center list */
+    text-align: left; /* Left-align text for readability */
+    display: inline-block; /* Keeps list width minimal */
+}
+
+/* Hover effect for card */
 .service-card:hover {
-    transform: translateY(-6px); /* Lift */
+    transform: translateY(-6px); /* Lift card slightly on hover */
 }
 
 /* Card headings */
 .service-card h3 {
-    font-size: 1.4rem; /* Heading size */
-    margin-bottom: 15px; /* Space */
+    font-size: 1.8rem; /* Heading size */
+    margin-bottom: 15px; /* Space below heading */
+    text-shadow: 2px 1px 2px black; /* Shadow for readability */
 }
 
 /* Price badge */
 .price {
-    background: #1f6b3c; /* Green */
-    display: inline-block; /* Fit content */
-    padding: 10px 18px; /* Space */
-    border-radius: 10px; /* Rounded */
-    font-weight: 800; /* Bold */
-    margin-bottom: 15px; /* Space */
+    background: #1f6b3c; /* Green background for badge */
+    display: inline-block; /* Wrap tightly around text */
+    padding: 12px 18px; /* Space inside badge */
+    border-radius: 10px; /* Rounded corners */
+    font-weight: 900; /* Bold text */
+    margin: 15px auto 10px; /* Center horizontally with spacing */
+    text-align: center; /* Center text inside badge */
+    cursor: pointer; /* Pointer on hover */
+    text-decoration: none; /* Remove underline if converted to link */
 }
 
-/* List */
+/* List styling */
 .service-card ul {
-    margin: 15px 0; /* Space */
-    padding-left: 20px; /* Indent */
+    margin: 15px 0; /* Vertical spacing */
+    padding-left: 20px; /* Indent for bullets */
 }
 
 /* List items */
 .service-card li {
-    margin-bottom: 8px; /* Space */
-    line-height: 1.4; /* Readability */
+    margin-bottom: 8px; /* Space between items */
+    line-height: 1.4; /* Readable spacing */
 }
 
-/* Muted text */
+/* Muted paragraph text */
 .muted {
-    opacity: 0.85; /* Softer */
-    font-size: 0.95rem; /* Slightly smaller */
+    opacity: 0.85; /* Slightly faded */
+    font-size: 0.95rem; /* Slightly smaller font */
 }
 
-/* Notes */
+/* Notes inside cards */
 .note {
-    margin-top: 15px; /* Space */
-    font-style: italic; /* Italic */
-    font-size: 0.95rem; /* Size */
+    margin-top: 15px; /* Space above note */
+    font-style: italic; /* Italicized */
+    font-size: 0.95rem; /* Note font size */
 }
 
-/* Warning card */
+/* Warning cards */
 .warning {
-    background: rgba(128, 0, 0, 0.25); /* Maroon tint */
+    background: rgba(128, 0, 0, 0.35); /* Maroon tint for warnings */
 }
 
 /* ===========================
@@ -153,19 +236,22 @@ body {
 =========================== */
 @media (max-width: 768px) {
     .page-wrapper {
-        padding: 80px 15px 30px; /* Reduce spacing */
+        padding: 80px 15px 30px; /* Reduce side padding on tablets */
     }
     .service-card {
-        padding: 25px; /* Smaller padding */
+        padding: 25px; /* Slightly more padding for readability */
     }
 }
 
 @media (max-width: 480px) {
     .service-card h3 {
-        font-size: 1.25rem; /* Smaller headings */
+        font-size: 1.25rem; /* Smaller headings on mobile */
     }
     .price {
-        font-size: 0.9rem; /* Smaller price */
-        padding: 8px 14px; /* Smaller badge */
+        font-size: 0.9rem; /* Smaller badge text */
+        padding: 8px 14px; /* Smaller badge padding */
+    }
+    .service-card ul {
+        padding-left: 15px; /* Reduce bullet indent */
     }
 }
