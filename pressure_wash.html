@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressure Washing Services</title>
+    <link rel="stylesheet" href="pressure_wash.css">
+</head>
+<body>
+    <!-- BACKGROUND SLIDESHOW -->
+    <div class="background-slideshow"></div>
+    <div class="background-overlay"></div>
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">Home</a>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/256753044293" target="_blank" class="whatsapp-float">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp">
+    </a>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-wrapper">
+        <!-- HEADER -->
+        <div class="section-header">
+            <h2>Pressure Washing Services</h2>
+            <p>(Labour Only – Materials Charged Separately)</p>
+        </div>
+
+        <!-- SERVICES GRID -->
+        <div class="service-cards">
+
+            <!-- Walls and Fences -->
+            <div class="service-card" data-text="Walls and Fences Cleaning - UGX 2,000 / sqm">
+                <h3>Walls and Fences</h3>
+                <p>Cleans walls and fences to remove dirt, stains, and algae.</p>
+                <a class="price" href="#">UGX 2,000 / sqm</a>
+            </div>
+
+            <!-- Driveways and Paved Areas -->
+            <div class="service-card" data-text="Driveways and Paved Areas Cleaning - UGX 1,500 / sqm">
+                <h3>Driveways and Paved Areas</h3>
+                <p>Restores driveways and paths to their original look.</p>
+                <a class="price" href="#">UGX 1,500 / sqm</a>
+            </div>
+
+            <!-- Outdoor Furniture / Benches -->
+            <div class="service-card" data-text="Outdoor Furniture / Benches Cleaning - UGX 8,000 per item">
+                <h3>Outdoor Furniture / Benches</h3>
+                <p>Cleans outdoor benches, chairs, and other fixed furniture.</p>
+                <a class="price" href="#">UGX 5,000 per item</a>
+            </div>
+
+            <!-- Roof & Canopy Washing -->
+            <div class="service-card" data-text="Roof & Canopy Washing - UGX 6,000 / sqm">
+                <h3>Roof & Canopy Washing</h3>
+                <p>Removes moss, dirt, and debris from roofs or canopies.</p>
+                <a class="price" href="#">UGX 8,000 / sqm</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript for WhatsApp Price Buttons + Fade-in Animation -->
+    <script>
+        // WhatsApp number
+        const whatsappNumber = "+256753044293";
+
+        // Select all price buttons
+        const priceButtons = document.querySelectorAll(".price");
+
+        // Add click listener to each price button
+        priceButtons.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault(); // prevent default link
+                const message = encodeURIComponent("Hello, I am interested in " + btn.closest(".service-card").dataset.text);
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+                window.open(whatsappURL, "_blank");
+            });
+        });
+
+        // FADE-IN ANIMATION ON SCROLL
+        const cards = document.querySelectorAll(".service-card");
+
+        const fadeInOnScroll = () => {
+            const windowBottom = window.innerHeight;
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if(cardTop < windowBottom - 100){
+                    card.classList.add("fade-in");
+                }
+            });
+        };
+
+        // Listen to scroll and load events
+        window.addEventListener("scroll", fadeInOnScroll);
+        window.addEventListener("load", fadeInOnScroll);
+    </script>
+</body>
+</html>

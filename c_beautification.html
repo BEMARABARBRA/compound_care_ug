@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Beautification Services</title>
+    <link rel="stylesheet" href="c_beautification.css">
+</head>
+<body>
+    <!-- BACKGROUND SLIDESHOW -->
+    <div class="background-slideshow"></div>
+    <div class="background-overlay"></div>
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">Home</a>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/256753044293" target="_blank" class="whatsapp-float">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp">
+    </a>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-wrapper">
+        <!-- HEADER -->
+        <div class="section-header">
+            <h2>Compound Beautification Services</h2>
+            <p>(Labour Only – Materials Charged Separately)</p>
+        </div>
+
+        <!-- SERVICES GRID -->
+        <div class="service-cards">
+
+            <!-- Outdoor Painting -->
+            <div class="service-card">
+                <h3>Outdoor Painting</h3>
+                <p>Improves how walls and surfaces look.</p>
+                <p class="muted"><em>Depends on wall size, surface condition, and complexity of work.</em></p>
+                <a class="price" href="#" data-text="Outdoor Painting at UGX 2,000 - 5,000 / sqm">UGX 2,000 - 5,000 / sqm</a>
+            </div>
+
+            <!-- Outdoor Carpeting -->
+            <div class="service-card">
+                <h3>Outdoor Carpeting / Artificial Grass</h3>
+                <p>Improves ground appearance.</p>
+                <p class="muted"><em>Depends on area size and surface complexity</em></p>
+                <a class="price" href="#" data-text="Outdoor Carpeting / Artificial Grass at UGX 4,000 – 6,000 / sqm">UGX 4,000 – 6,000 / sqm</a>
+            </div>
+
+            <!-- Lighting Installation -->
+            <div class="service-card">
+                <h3>Lighting Installation</h3>
+                <p>Improves appearance at night.</p>
+                <p class="muted"><em>Depends on height and installation complexity</em></p>
+                <a class="price" href="#" data-text="Lighting Installation at UGX 15,000 – 30,000 / light">UGX 15,000 – 30,000 / light</a>
+            </div>
+
+            <!-- Filling Broken Areas -->
+            <div class="service-card">
+                <h3>Filling Broken Areas</h3>
+                <p>Fixes damaged or uneven surfaces.</p>
+                <p class="muted"><em>Depends on size and severity of damage</em></p>
+                <a class="price" href="#" data-text="Filling Broken Areas at UGX 4,000 – 6,000 / sqm">UGX 4,000 – 6,000 / sqm</a>
+            </div>
+
+            <!-- Paving Works -->
+            <div class="service-card">
+                <h3>Paving Works</h3>
+                <p>Improves surface finish.</p>
+                <p class="muted"><em>Depends on material type and area complexity</em></p>
+                <a class="price" href="#" data-text="Paving Works at UGX 6,000 – 12,000 / sqm">UGX 6,000 – 12,000 / sqm</a>
+            </div>
+
+            <!-- Fixed Visual Features -->
+            <div class="service-card">
+                <h3>Fixed Visual Features</h3>
+                <p>Adds permanent visual appeal (benches, stones, small shades).</p>
+                <p class="muted"><em>Depends on size and complexity</em></p>
+                <a class="price" href="#" data-text="Fixed Visual Features at UGX 50,000 – 150,000 / installation">UGX 50,000 – 150,000 / installation</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript to handle WhatsApp links -->
+    <script>
+        const whatsappNumber = "+256753044293";
+
+        document.querySelectorAll(".price").forEach(btn => {
+            btn.addEventListener("click", e => {
+                e.preventDefault();
+                const message = encodeURIComponent("Hello, I am interested in " + btn.dataset.text);
+                window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+            });
+        });
+    </script>
+</body>
+</html>
