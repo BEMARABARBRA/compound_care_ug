@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Event Outdoor Clean-Up</title>
+    <link rel="stylesheet" href="post_event_cleanup.css">
+</head>
+<body>
+
+    <!-- BACKGROUND SLIDESHOW -->
+    <div class="background-slideshow"></div>
+    <div class="background-overlay"></div>
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">Home</a>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="#" id="whatsapp-float" class="whatsapp-float">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp">
+    </a>
+
+    <!-- PAGE CONTENT WRAPPER -->
+    <div class="page-wrapper">
+        <!-- PAGE HEADER -->
+        <div class="section-header">
+            <h2>Post-Event Outdoor Clean-Up</h2>
+            <p>(Compounds & Outdoor Areas Only)</p>
+        </div>
+
+        <!-- SERVICES GRID -->
+        <div class="service-cards">
+
+            <!-- GENERAL POST-EVENT CLEAN-UP -->
+            <div class="service-card">
+                <h3>General Post-Event Clean-Up</h3>
+                <p>
+                    Removal of litter, disposable items, and surface dirt after
+                    outdoor events to restore the compound to a neat condition.
+                </p>
+                <p class="muted">
+                    <em>Disposal area provided by client or billed separately</em>
+                </p>
+                <a class="price"
+                   href="#"
+                   data-text="General Post-Event Clean-Up - UGX 1000 per square meter">
+                    UGX 1000 / sqm
+                </a>
+            </div>
+
+            <!-- LIGHT PRESSURE RINSING -->
+            <div class="service-card">
+                <h3>Light Pressure Rinsing</h3>
+                <p>
+                    Gentle water rinsing of outdoor surfaces to remove dust,
+                    spills, and light stains after events.
+                </p>
+                <p class="muted">
+                    <em>Water-based rinse, no chemicals used</em>
+                </p>
+                <a class="price"
+                   href="#"
+                   data-text="Light Pressure Rinsing - UGX 1500 per square meter">
+                    UGX 1500 / sqm
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- WHATSAPP PREFILLED MESSAGE SCRIPT -->
+    <script>
+        // WhatsApp number
+        const whatsappNumber = "+256753044293";
+
+        // Pre-filled welcome message for floating button
+        const welcomeMessage = encodeURIComponent(
+            "Hello! Welcome to Compound Care. How can we support you today?"
+        );
+
+        // Floating WhatsApp button opens welcome message
+        document.getElementById("whatsapp-float").addEventListener("click", function(e) {
+            e.preventDefault();
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${welcomeMessage}`;
+            window.open(whatsappURL, "_blank");
+        });
+
+        // Select all service price buttons
+        const priceButtons = document.querySelectorAll(".price");
+
+        // Click handler for each price button
+        priceButtons.forEach(button => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault(); // Stop default link
+
+                // Combine welcome message with selected service
+                const message = encodeURIComponent(
+                    "Hello Compound Care Uganda. I am interested in " + this.dataset.text
+                );
+
+                // Open WhatsApp with pre-filled message
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+                window.open(whatsappURL, "_blank");
+            });
+        });
+    </script>
+
+</body>
+</html>

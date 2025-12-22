@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drainage Cleaning Services</title>
+    <link rel="stylesheet" href="drainage.css">
+</head>
+<body>
+    <!-- BACKGROUND SLIDESHOW -->
+    <div class="background-slideshow"></div>
+    <div class="background-overlay"></div>
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">Home</a>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/256753044293" target="_blank" class="whatsapp-float">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp">
+    </a>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-wrapper">
+        <!-- HEADER -->
+        <div class="section-header">
+            <h2>Drainage Cleaning Services</h2>
+            <p>(Labour Only – Client Provides Disposal Area)</p>
+        </div>
+
+        <!-- SERVICES GRID -->
+        <div class="service-cards">
+
+            <!-- Compound Drainage Cleaning -->
+            <div class="service-card">
+                <h3>Compound Drainage Cleaning</h3>
+                <p>Clears debris, dirt, and sludge from compound drains to ensure smooth water flow and prevent flooding.</p>
+                <p class="muted"><em>Disposal area provided by client (otherwise billed separately)</em></p>
+                <a class="price" href="https://wa.me/256753044293" target="_blank"
+                   data-text="Drainage Cleaning - UGX 5,000 – 8,000 per running meter">
+                   UGX 10,000 – 25,000 per running meter
+                </a>
+            </div>
+
+            <!-- Optional Add-on: Inspection -->
+            <div class="service-card">
+                <h3>Drainage Inspection</h3>
+                <p>Pre-service check to identify blockages or potential issues.</p>
+                <p class="muted"><em>Optional service for better planning.</em></p>
+                <a class="price" href="https://wa.me/256753044293" target="_blank"
+                   data-text="Drainage Inspection - UGX 2,500 per inspection">
+                   UGX 30,000 per inspection
+                </a>
+            </div>
+
+            <!-- Optional Add-on: Preventive Treatment -->
+            <div class="service-card">
+                <h3>Preventive Treatment</h3>
+                <p>Apply anti-clogging or algae treatment after cleaning.</p>
+                <p class="muted"><em>Optional to keep drains clean longer.</em></p>
+                <a class="price" href="https://wa.me/256753044293" target="_blank"
+                   data-text="Drainage Preventive Treatment - UGX 3,500 per running meter">
+                   UGX 5,000 per running meter
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript for WhatsApp Pre-filled Message -->
+    <script>
+        // WhatsApp number
+        const whatsappNumber = "+256753044293";
+
+        // Select all price buttons
+        const priceButtons = document.querySelectorAll(".price");
+
+        // Add click listener to each price button
+        priceButtons.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevent default link
+                const message = encodeURIComponent("Hello, I am interested in " + btn.dataset.text);
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+                window.open(whatsappURL, "_blank"); // Open WhatsApp chat
+            });
+        });
+    </script>
+</body>
+</html>
