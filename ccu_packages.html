@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Care Packages</title>
+    <link rel="stylesheet" href="ccu_packages.css">
+</head>
+<body>
+
+    <!-- BACKGROUND SLIDESHOW -->
+    <div class="background-slideshow"></div>
+    <div class="background-overlay"></div>
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">Home</a>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="#" id="whatsapp-float" class="whatsapp-float">
+        <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp">
+    </a>
+
+    <!-- PAGE CONTENT WRAPPER -->
+    <div class="page-wrapper">
+
+        <!-- PAGE HEADER -->
+        <div class="section-header">
+            <h2>Compound Care & Garden Packages</h2>
+            <p>Affordable and tailored services for homes, commercial spaces, and events.</p>
+        </div>
+
+        <!-- PACKAGES GRID -->
+        <div class="service-cards">
+
+            <!-- 1. Home Compound Care (Monthly) -->
+            <div class="service-card">
+                <h3>Home Compound Care (Monthly)</h3>
+                <p><strong>Scope:</strong></p>
+                <p>Slash compound<br>Hedge & shrub maintenance<br>Garden maintenance<br>Light pressure wash<br>Waste disposal</p>
+                <p><strong>Frequency:</strong> Monthly</p>
+                <p><strong>Contract:</strong> 12 months</p>
+                <p class="muted"><strong>Savings:</strong> UGX 500 / sqm</p>
+                <p class="price"><strong>Package Price:</strong> UGX 1,500 / sqm</p>
+            </div>
+
+            <!-- 2. Commercial Building Care (Weekly) -->
+            <div class="service-card">
+                <h3>Commercial Building Care (Weekly)</h3>
+                <p><strong>Scope:</strong></p>
+                <p>Slash compound<br>Hedge & shrub maintenance<br>Deep pressure wash<br>Waste disposal</p>
+                <p><strong>Frequency:</strong> Weekly</p>
+                <p><strong>Contract:</strong> 12 months</p>
+                <p class="muted"><strong>Savings:</strong> UGX 1,500 / sqm</p>
+                <p class="price"><strong>Package Price:</strong> UGX 2,000 / sqm</p>
+            </div>
+
+            <!-- 3. Event Pre & Post-Care -->
+            <div class="service-card">
+                <h3>Event Pre & Post-Care</h3>
+                <p><strong>Scope:</strong></p>
+                <p>Pre-event: Light pressure wash, open-area cleanup, compound slashing, hedge maintenance<br>
+                   Post-event: General post-event clean-up, light-pressure rinse</p>
+                <p class="muted"><strong>Savings:</strong> UGX 2,000 / sqm</p>
+                <p class="price"><strong>Package Price:</strong> UGX 2,400 / sqm (Both Pre and Post Event Care)</p>
+            </div>
+
+            <!-- 4. Seasonal Deep Clean (Quarterly) -->
+            <div class="service-card">
+                <h3>Seasonal Deep Clean (Quarterly)</h3>
+                <p><strong>Scope:</strong></p>
+                <p>Full compound slashing<br>Hedge & shrub maintenance<br>Tree trimming<br>Deep pressure wash<br>Wall & fence cleaning<br>Open area maintenance<br>Garden maintenance</p>
+                <p><strong>Frequency:</strong> Quarterly</p>
+                <p><strong>Contract:</strong> 12 months</p>
+                <p class="muted"><strong>Savings:</strong> UGX 1,500 / sqm</p>
+                <p class="price"><strong>Package Price:</strong> UGX 2,500 / sqm</p>
+            </div>
+
+            <!-- 5. Garden Setup & Crop Care (Monthly) -->
+            <div class="service-card">
+                <h3>Garden Setup & Crop Care (Monthly)</h3>
+                <p><strong>Scope:</strong></p>
+                <p>Garden maintenance<br>Weekly crop care<br>Waste disposal</p>
+                <p><strong>Frequency:</strong> Monthly</p>
+                <p><strong>Contract:</strong> 12 months</p>
+                <p class="muted"><strong>Savings:</strong> UGX 5,000 / sqm on setup</p>
+                <p class="price"><strong>Package Price:</strong> UGX 10,000 / sqm (Setup)</p>
+            </div>
+
+            <!-- 6. Home Compound & Garden Care (Monthly) -->
+            <div class="service-card">
+                <h3>Home Compound & Garden Care (Monthly)</h3>
+                <p><strong>Scope:</strong></p>
+                <p>Slash compound<br>Hedge & shrub maintenance<br>Garden maintenance<br>Light pressure wash<br>Waste disposal</p>
+                <p><strong>Frequency:</strong> Monthly</p>
+                <p><strong>Contract:</strong> 12 months</p>
+                <p class="muted"><strong>Savings:</strong> UGX 500 / sqm</p>
+                <p class="price"><strong>Package Price:</strong> UGX 1,500 / sqm</p>
+            </div>
+
+        </div>
+    </div>
+
+   <!-- WHATSAPP PREFILLED MESSAGE SCRIPT -->
+<script>
+    const whatsappNumber = "+256753044293"; // Your WhatsApp number
+    const defaultMessage = "Welcome to Compound Care Uganda! How may we be of support today?"; // Default greeting
+
+    // Floating WhatsApp Button click
+    document.getElementById("whatsapp-float").addEventListener("click", function(e){
+        e.preventDefault();
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`, "_blank");
+    });
+
+    // Price badge click - pull scope/description dynamically
+    const priceButtons = document.querySelectorAll(".price"); // All price badges
+    priceButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const card = btn.closest(".service-card"); // Get parent service card
+            const serviceName = card.querySelector("h3").textContent; // Get service name
+            const serviceScope = Array.from(card.querySelectorAll("p")) // Get all paragraph texts
+                                  .map(p => p.textContent)
+                                  .join("\n"); // Join paragraphs with line breaks
+            const message = `Hello! I am interested in your "${serviceName}" package:\n${serviceScope}\n\n${defaultMessage}`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
+        });
+    });
+</script>
+
+
+</body>
+</html>

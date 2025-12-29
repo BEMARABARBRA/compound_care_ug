@@ -1,0 +1,185 @@
+/* ===================== GLOBAL RESET & FONTS ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  body {
+    background: #f3f2f3;
+    color: #030705;
+    line-height: 1.6;
+  }
+  
+  /* ===================== HERO / BANNER ===================== */
+  .hero {
+    background: linear-gradient(rgba(3,7,5,0.8), rgba(3,7,5,0.8));
+    color: #f3f2f3;
+    text-align: center;
+    padding: 6rem 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-content h1 {
+    line-height: 1.2;  /* Improves readability for shorter text */
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    max-width: 800px;  /* Limits paragraph width for readability */
+    margin: 0 auto;    /* Centers the paragraph */
+    animation: fadeIn 1.2s ease forwards;
+    line-height: 1.5;  /* Improves readability for shorter text */
+    text-align: center; /* Keeps text centered in hero section */
+}
+
+  
+  /* ===================== SERVICE GRID ===================== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding: 3rem 5%;
+  }
+  
+  .service-card {
+    background: #658F9D;
+    color: #f3f2f3;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+  }
+  
+  /* ===================== SECTION HEADERS ===================== */
+  .section-header {
+    text-align: center;
+    padding: 3rem 5% 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+    color: #030705;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    font-size: 1rem;
+    color: #4B4547;
+  }
+  
+  /* ===================== LIST STYLES ===================== */
+  .client-types, .operation-principles {
+    max-width: 900px;
+    margin: 1.5rem auto 3rem;
+    list-style: disc inside;
+    color: #030705;
+  }
+  
+  .client-types li, .operation-principles li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
+  
+  /* ===================== VISION & MISSION ===================== */
+  .vision-mission {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem 5%;
+  }
+  
+  .vision, .mission {
+    background: #B54535;
+    color: #f3f2f3;
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform 0.3s;
+  }
+  
+  .vision:hover, .mission:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* ===================== CTA ===================== */
+  .cta {
+    background: #19BC52;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .cta-button {
+    background: #030705;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 30px;
+    transition: 0.3s;
+  }
+  
+  .cta-button:hover {
+    background: #055920;
+  }
+  
+  /* ===================== FOOTER ===================== */
+  footer {
+    background: #030705;
+    color: #f3f2f3;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  /* ===================== ANIMATIONS ===================== */
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 900px) {
+    .vision-mission {
+      grid-template-columns: 1fr;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #055920;
+      position: absolute;
+      top: 60px;
+      right: 5%;
+      width: 200px;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+  }
+  

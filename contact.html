@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Uganda</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="contact.css">
+
+<!-- Intl Tel Input CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/css/intlTelInput.css">
+
+</head>
+<body>
+
+    <!-- Add this inside <body> but before your container -->
+<div class="background-overlay"></div>
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">Home</a>
+
+<div class="container">
+  <form id="contactForm">
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Your full name" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="Your email address" required>
+
+    <label for="phone">Contact Number</label>
+<input type="tel" id="phone" placeholder="0777 657427" required>
+
+
+    <label for="district">District</label>
+    <input type="text" id="district" placeholder="Start typing your district..." autocomplete="off" required>
+    <div id="districtList" class="autocomplete-items"></div>
+
+    <label for="landmark">Area / Landmark</label>
+    <input type="text" id="landmark" placeholder="e.g. Lubowa, near Quality Shopping Village" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="Write your message here..." required></textarea>
+
+    <label>Send Via</label>
+    <div class="delivery-options">
+      <input type="radio" id="whatsapp" name="delivery" value="whatsapp" checked>
+      <label for="whatsapp">WhatsApp</label>
+
+      <input type="radio" id="emailOption" name="delivery" value="email">
+      <label for="emailOption">Email</label>
+    </div>
+
+    <button type="submit">Send Message</button>
+    <p id="successMessage" class="success-msg"></p>
+
+  </form>
+</div>
+
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/js/utils.js"></script>
+
+<script>
+// ================= INTERNATIONAL PHONE INPUT =================
+const phoneInput = document.querySelector("#phone");
+const iti = window.intlTelInput(phoneInput, {
+  initialCountry: "ug",
+  separateDialCode: true,
+  preferredCountries: ["ug","ke","tz","rw","gb","us"]
+});
+
+// ================= FULL UGANDA DISTRICTS =================
+const districts = [
+  "Abim","Adjumani","Agago","Alebtong","Amolatar","Amudat","Amuria","Amuru","Apac",
+  "Arua","Budaka","Bududa","Bugiri","Bugweri","Buhweju","Buikwe","Bukedea","Bukomansimbi",
+  "Bukwo","Bulambuli","Buliisa","Bundibugyo","Bushenyi","Busia","Butaleja","Butambala",
+  "Buvuma","Buyende","Dokolo","Gomba","Gulu","Hoima","Ibanda","Iganga","Isingiro","Jinja",
+  "Kaabong","Kabale","Kabarole","Kaberamaido","Kalangala","Kaliro","Kalungu","Kampala","Kamuli",
+  "Kamwenge","Kanungu","Kapchorwa","Kasese","Katakwi","Kayunga","Kibaale","Kiboga","Kibuku",
+  "Kikuube","Kiruhura","Kiryandongo","Kisoro","Kitgum","Kotido","Kumi","Kween","Kyankwanzi",
+  "Kyegegwa","Kyenjojo","Kyotera","Lamwo","Lira","Luuka","Luwero","Lwengo","Lyantonde","Manafwa",
+  "Maracha","Masaka","Masindi","Mayuge","Mbale","Mbarara","Mitooma","Mityana","Moroto","Moyo",
+  "Mpigi","Mubende","Mukono","Nakapiripirit","Nakaseke","Nakasongola","Namayingo","Namisindwa",
+  "Namutumba","Napak","Nebbi","Ngora","Ntoroko","Ntungamo","Nwoya","Omoro","Otuke","Oyam",
+  "Pader","Pakwach","Pallisa","Rakai","Rubirizi","Rubanda","Rukiga","Rukungiri","Sembabule",
+  "Serere","Sheema","Sironko","Soroti","Ssese Islands","Tororo","Wakiso","Yumbe","Zombo"
+];
+
+// ================= AUTOCOMPLETE FUNCTION =================
+const districtInput = document.getElementById("district");
+const districtList = document.getElementById("districtList");
+
+districtInput.addEventListener("input", function(){
+  const val = this.value.toLowerCase();
+  districtList.innerHTML = '';
+  if(!val) return;
+
+  const matches = districts.filter(d => d.toLowerCase().startsWith(val));
+  matches.forEach(match => {
+    const div = document.createElement("div");
+    div.textContent = match;
+    div.classList.add("autocomplete-item");
+    div.addEventListener("click", function(){
+      districtInput.value = this.textContent;
+      districtList.innerHTML = '';
+    });
+    districtList.appendChild(div);
+  });
+});
+
+// Close suggestions when clicking outside
+document.addEventListener("click", function(e){
+  if(e.target !== districtInput) districtList.innerHTML = '';
+});
+
+// ================= FORM SUBMISSION =================
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = iti.getNumber();
+  const district = districtInput.value;
+  const landmark = document.getElementById("landmark").value;
+  const message = document.getElementById("message").value;
+  const delivery = document.querySelector('input[name="delivery"]:checked').value;
+
+  const fullMessage =
+`New Contact Form Message
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+District: ${district}
+Area / Landmark: ${landmark}
+
+Message:
+${message}`;
+
+  if(delivery === "whatsapp"){
+    const whatsappURL = "https://wa.me/256753044293?text=" + encodeURIComponent(fullMessage);
+    window.open(whatsappURL, "_blank");
+  } else if(delivery === "email"){
+    const emailURL = "mailto:barbarabemara@gmail.com?subject=New Contact Form Message&body=" + encodeURIComponent(fullMessage);
+    window.location.href = emailURL;
+  }
+
+  // Success confirmation
+  const success = document.getElementById("successMessage");
+  success.textContent = `Your message has been sent via ${delivery === "whatsapp" ? "WhatsApp" : "Email"}!`;
+  success.style.display = "block";
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>

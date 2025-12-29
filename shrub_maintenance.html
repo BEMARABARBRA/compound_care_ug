@@ -4,7 +4,6 @@
     <title>Hedge and Shrub Maintenance</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSS Link -->
     <link rel="stylesheet" href="shrub_maintenance.css">
 </head>
@@ -23,21 +22,56 @@
         </div>
 
         <!-- MAIN CONTENT BOX -->
-        <div class="row">
+        <div class="row service-card"> <!-- Added service-card class -->
             <h3>Professional Hedge & Shrub Care</h3>
 
-            <p>Trim, shape, and maintain hedges and shrubs to keep your compound neat, healthy, and attractive. 
-            Includes pruning, removing overgrowth, clearing trimmings, and maintaining clean garden edges.</p>
+            <p>Trim, shape, and maintain hedges and shrubs to keep your compound neat, healthy, and attractive.</p>
+            <p>Includes pruning, removing overgrowth, clearing trimmings, and maintaining clean garden edges.</p>
 
+            <!-- PRICE BUTTON -->
             <p class="price"><strong>UGX 400 / sqm (pre-booking required)</strong></p>
         </div>
 
     </div>
 
     <!-- WHATSAPP FLOATING ICON -->
-    <a href="https://wa.me/256000000000" class="whatsapp-float">
+    <a href="#" id="whatsapp-float" class="whatsapp-float">
         <img src="pictures/whatsapp_floating_logo.png" alt="WhatsApp">
     </a>
 
+    <!-- WHATSAPP SCRIPT: Floating WhatsApp & Price Button -->
+<script>
+    const whatsappNumber = "256753044293"; // Your WhatsApp number
+    const defaultMessage = "Welcome to Compound Care Uganda! How may we be of support today?";
+
+    // 1. Floating WhatsApp Button - generic greeting message
+    const whatsappFloat = document.getElementById("whatsapp-float");
+    if(whatsappFloat) {
+        whatsappFloat.addEventListener("click", function(e){
+            e.preventDefault();
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`, "_blank");
+        });
+    }
+
+    // 2. Price Button Click - sends WhatsApp with service-specific details
+    const priceButtons = document.querySelectorAll(".price");
+    priceButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const card = btn.closest(".service-card"); // Get parent service card
+            if(!card) return; // Safety check
+
+            const serviceName = card.querySelector("h3").textContent; // Service title
+            const serviceDetails = Array.from(card.querySelectorAll("p:not(.price)")) // All paragraphs except price
+                                        .map(p => p.textContent)
+                                        .join("\n"); // Join with line breaks
+
+            const message = `Hello! I am interested in your "${serviceName}" service:\n${serviceDetails}\n\n${defaultMessage}`;
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
+        });
+    });
+</script>
+
+    
 </body>
 </html>

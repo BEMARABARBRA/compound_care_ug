@@ -128,6 +128,7 @@ body {
     border-radius: 8px;
     font-size: 1.1rem;
     font-weight: 900;
+    cursor: pointer;            /* <-- This makes the cursor a pointer on hover */
 }
 
 /* ===========================

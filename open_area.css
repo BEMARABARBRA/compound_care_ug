@@ -141,6 +141,7 @@ body {
     border-radius: 8px; /* Rounded */
     font-weight: 900; /* Bold */
     font-size: 1.1rem; /* Size */
+    cursor: pointer;            /* <-- This makes the cursor a pointer on hover */
 }
 
 /* ===========================

@@ -1,0 +1,216 @@
+/* ================= GLOBAL RESET ================= */
+/* Remove default margins/padding and set font */
+* {
+    box-sizing: border-box;          /* Include padding/border in element width */
+    margin: 0;                        /* Remove default margin */
+    padding: 0;                       /* Remove default padding */
+    font-family: "Roboto", Arial, sans-serif; /* Set default font */
+  }
+  
+  /* ================= BODY BACKGROUND ================= */
+  body {
+    background: #f4f6f8;             /* Light grey background for the page */
+    padding: 20px;                    /* Space around the page content */
+
+  }
+
+/* ================= BODY BACKGROUND IMAGE ================= */
+body::before {
+    content: '';                                /* Required for pseudo-element */
+    position: fixed;                            /* Fixed to viewport */
+    top: 0;
+    left: 0;
+    width: 100%;                                /* Full width */
+    height: 100%;                               /* Full height */
+    background-image: url('pictures/mowing_machine.jpeg'); /* Your background image */
+    background-size: 100% 105%;                 /* Stretch image to width & slightly taller height */
+    background-position: center;                /* Center the image */
+    background-repeat: no-repeat;               /* Prevent repeating */
+    background-attachment: fixed;               /* Stays fixed during scroll */
+    opacity: 0.85;                              /* Slight transparency */
+    z-index: -2;                                /* Behind overlay and content */
+}
+
+/* ===========================
+   BACKGROUND OVERLAY
+=========================== */
+.background-overlay {
+    position: fixed;                            /* Fixed to viewport */
+    inset: 0;                                   /* Top:0, Right:0, Bottom:0, Left:0 */
+    background: rgba(10, 10, 10, 0.55);        /* Semi-transparent dark overlay */
+    z-index: -1;                                /* On top of background image but behind content */
+}
+
+  /* ===========================
+   BACK BUTTON
+=========================== */
+.back-btn {
+    position: fixed;                     /* Fixed position relative to viewport */
+    top: 20px;                           /* 20px from top */
+    right: 20px;                         /* 20px from right */
+    background: rgba(97, 9, 9, 0.8);     /* Dark reddish background with opacity */
+    backdrop-filter: blur(12px);         /* Glassy blur effect behind button */
+    padding: 12px 20px;                  /* Top-bottom & left-right padding */
+    border-radius: 10px;                 /* Rounded corners */
+    color: rgb(243, 238, 238);           /* Light text color */
+    font-weight: 800;                     /* Bold text */
+    text-decoration: none;               /* Remove underline */
+    border: 2px solid rgba(255, 255, 255, 0.7); /* Subtle border */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.20);    /* Soft shadow for depth */
+    z-index: 1000;                       /* Always on top of other elements */
+    transition: 0.3s ease;               /* Smooth hover animation */
+}
+
+/* Hover effect */
+.back-btn:hover {
+    background: rgb(10, 63, 8);          /* Dark green on hover */
+    color: #fff;                          /* White text */
+    transform: translateY(-2px);          /* Slight lift effect */
+}
+
+/* ===========================
+   RESPONSIVE ADJUSTMENTS
+=========================== */
+@media (max-width: 480px) {
+    .back-btn {
+        padding: 10px 16px;              /* Slightly smaller padding for mobile */
+        font-size: 14px;                  /* Adjust text size */
+        top: 15px;                        /* Slightly closer to top on mobile */
+        right: 15px;                      /* Slightly closer to right */
+    }
+}
+
+  
+  /* ================= FORM CONTAINER ================= */
+  .container {
+    max-width: 650px;                 /* Limit width for readability */
+    margin: auto;                      /* Center horizontally */
+    background: rgba(255, 255, 255, 0.85); /* White with 85% opacity */
+    padding: 25px;                     /* Inner padding */
+    border-radius: 10px;               /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Soft shadow for depth */
+  }
+  
+  /* ================= LABELS ================= */
+  label {
+    display: block;                   /* Each label on its own line */
+    margin-bottom: 6px;               /* Space below the label */
+    font-weight: 600;                  /* Bold text */
+    color: #333;                       /* Dark text color */
+    font-size: 15px;                   /* Readable font size */
+  }
+  
+  /* ================= INPUT, SELECT & TEXTAREA ================= */
+  input,
+  select,
+  textarea {
+    width: 100%;                       /* Full width of container */
+    padding: 12px;                      /* Space inside input */
+    margin-bottom: 18px;                /* Space below each input */
+    border-radius: 6px;                 /* Rounded corners */
+    border: 1px solid #ccc;             /* Light grey border */
+    font-size: 15px;                    /* Text size */
+  }
+  
+  /* ================= TEXTAREA SPECIFIC ================= */
+  textarea {
+    min-height: 150px;                  /* Minimum height for textarea */
+    resize: vertical;                   /* Allow vertical resizing */
+  }
+  
+  /* ================= INTERNATIONAL PHONE INPUT ================= */
+  .iti {
+    width: 100%;                        /* Full width for phone input */
+    margin-bottom: 18px;                /* Space below phone field */
+  }
+  
+  /* ================= DELIVERY OPTIONS (RADIO BUTTONS) ================= */
+  .delivery-options {
+    display: flex;                      /* Align radio buttons horizontally */
+    gap: 20px;                          /* Space between options */
+    margin-bottom: 18px;                /* Space below delivery options */
+  }
+  
+  .delivery-options input {
+    margin-right: 6px;                  /* Space between radio and label */
+    cursor: pointer;                     /* Pointer cursor on hover */
+  }
+  
+  /* ================= SUBMIT BUTTON ================= */
+  button {
+    width: 100%;                        /* Full width button */
+    background: #25D366;                /* WhatsApp green color */
+    color: #ffffff;                      /* White text */
+    border: none;                        /* Remove default border */
+    padding: 14px;                       /* Inner padding */
+    font-size: 16px;                      /* Text size */
+    border-radius: 6px;                   /* Rounded corners */
+    cursor: pointer;                      /* Pointer cursor on hover */
+    transition: background 0.3s ease;     /* Smooth hover transition */
+  }
+  
+  button:hover {
+    background: #1ebe5d;                 /* Darker green on hover */
+  }
+  
+  /* ================= SUCCESS MESSAGE ================= */
+  .success-msg {
+    display: none;                        /* Hidden by default */
+    margin-top: 10px;                     /* Space above message */
+    color: green;                         /* Green text for success */
+    font-weight: bold;                     /* Bold text */
+    font-size: 14px;                       /* Slightly smaller than inputs */
+  }
+  
+  /* ================= AUTOCOMPLETE DROPDOWN ================= */
+  .autocomplete-items {
+    position: relative;                   /* Position relative for dropdown */
+    border: 1px solid #ccc;               /* Light grey border */
+    border-top: none;                      /* Remove top border to connect with input */
+    max-height: 150px;                     /* Max height of dropdown */
+    overflow-y: auto;                      /* Scroll if too many items */
+    background: #fff;                       /* White background */
+    margin-top: -10px;                      /* Slight overlap with input */
+    margin-bottom: 18px;                    /* Space below dropdown */
+    border-radius: 6px;                     /* Rounded corners */
+    z-index: 99;                             /* Ensure dropdown is on top */
+  }
+  
+  .autocomplete-item {
+    padding: 10px;                          /* Inner spacing for each suggestion */
+    cursor: pointer;                         /* Pointer cursor on hover */
+  }
+  
+  .autocomplete-item:hover {
+    background-color: #f0f0f0;              /* Light grey hover effect */
+  }
+  
+  /* ================= RESPONSIVE DESIGN ================= */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;                        /* Reduce padding on tablets */
+    }
+  
+    input, select, textarea, button {
+      font-size: 14px;                       /* Slightly smaller font on tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      padding: 12px;                          /* Less space around page */
+    }
+  
+    .container {
+      padding: 15px;                          /* Reduce form padding */
+    }
+  
+    .delivery-options {
+      flex-direction: column;                 /* Stack delivery options vertically */
+    }
+  
+    input, select, textarea, button {
+      font-size: 13px;                        /* Smaller font on small screens */
+    }
+  }
+  
