@@ -7,25 +7,61 @@
   }
   
   body {
-    background: #f3f2f3;
+    background: #ccc5c5;
     color: #030705;
     line-height: 1.6;
+
+   
+
   }
   
   /* ===================== HERO / BANNER ===================== */
   .hero {
-    background: linear-gradient(rgba(3,7,5,0.8), rgba(3,7,5,0.8));
+    padding-bottom: 60px;
+    /* Background image only */
+    background-image: url("pictures/hero_image1.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /* Keep background fixed for scrolling effect */
+    background-attachment: fixed;
+
+    /* Text and layout */
     color: #f3f2f3;
     text-align: center;
-    padding: 6rem 1rem;
+    padding: 3rem 0.8rem;
     position: relative;
     overflow: hidden;
-  }
+}
+    
+
+
+/* Dark overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3,7,5,0.7); /* adjust opacity here */
+    z-index: 1;
+}
+
+/* Make sure hero content is above overlay */
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
   
   .hero-content h1 {
     line-height: 1.2;  /* Improves readability for shorter text */
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
+    font-size: 2.9rem;
+    text-shadow: 1px 1px 4px rgba(1, 39, 6, 0.918); /* Adds contrast against background */
+    margin-bottom: 0.8rem;
+    margin-top: 10px;
     animation: fadeIn 1s ease forwards;
   }
   
@@ -38,46 +74,404 @@
     text-align: center; /* Keeps text centered in hero section */
 }
 
-  
-  /* ===================== SERVICE GRID ===================== */
-  .services-grid {
+/* ===================== DOWNWARD CURVE AT BOTTOM ===================== */
+.hero::after {
+    content: "";                       /* Required for pseudo-element */
+    position: absolute;                /* Position relative to hero section */
+    bottom: -1px;                      /* Slight overlap to avoid gaps */
+    left: 0;                           /* Align to left */
+    width: 100%;                       /* Full width of hero */
+    height: 70px;                      /* Curve depth */
+
+    /* SVG background creating downward-facing curve */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C25,100 75,100 100,0 L100,100 L0,100 Z' fill='white'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;       /* Prevent repeating */
+    background-position: bottom;        /* Align to bottom of section */
+    background-size: 100% 100%;         /* Stretch to fit width and height */
+    
+    z-index: 2;                         /* Keep above hero background */
+    pointer-events: none;               /* Allow clicks through the curve */
+}
+ 
+
+/* ======================== WHO WE ARE ========================= */
+.who-we-are {
+    position: relative;                  /* Needed for overlay positioning */
+    background-image: url("pictures/soil_gardenfork.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;       /* Optional: makes image scroll with parallax effect */
+    padding: 0rem 0.4rem;                 /* Adjust spacing as needed */
+    color: #f3f2f3;                     /* Text color */
+    overflow: hidden;
+}
+
+
+/* Dark overlay */
+.who-we-are::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 5, 0.705);     /* Adjust opacity: 0.5 = 50% dark overlay */
+    z-index: 1;
+}
+
+/* Section content should be above the overlay */
+.who-we-are .section-header {
+    position: relative;
+    z-index: 2;
+}
+/* ===================== WHO WE ARE - SERVICE GRID ===================== */
+.who-we-are .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
-    padding: 3rem 5%;
-  }
-  
-  .service-card {
-    background: #658F9D;
-    color: #f3f2f3;
+    padding: 3rem 1%;
+    position: relative; /* ensure above overlay */
+    z-index: 2;
+}
+
+/* Service cards styling */
+.who-we-are .service-card {
+    background: rgba(73, 72, 72, 0.7); /* semi-transparent card */
     padding: 2rem;
     border-radius: 12px;
     text-decoration: none;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .service-card:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #ffffff; /* default text color for children */
+}
+
+/* Hover effect for cards */
+.who-we-are .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-  }
-  
-  /* ===================== SECTION HEADERS ===================== */
-  .section-header {
-    text-align: center;
-    padding: 3rem 5% 1rem;
-  }
-  
-  .section-header h2 {
-    font-size: 2rem;
-    color: #030705;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Service card headings */
+.who-we-are .service-card h3 {
+    font-size: 1.5rem;           /* slightly larger for clarity */
+    color: #ffffff;              /* ensures color applies */
+    font-weight: 700;
     margin-bottom: 1rem;
-  }
-  
-  .section-header p {
-    font-size: 1rem;
-    color: #4B4547;
-  }
-  
+    line-height: 1.3;
+}
+
+/* Service card paragraphs */
+.who-we-are .service-card p {
+    font-size: 1.0rem;
+    color: #dfdcdc;              /* ensures text color applies */
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* ===================== RESPONSIVE ADJUSTMENTS ===================== */
+@media (max-width: 768px) {
+    .who-we-are .service-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .who-we-are .service-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .who-we-are .service-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .who-we-are .service-card p {
+        font-size: 0.95rem;
+    }
+}
+
+
+ /* ===================== SECTION HEADERS ===================== */
+.who-we-are .section-header {
+    text-align: center;          /* Center-align text */
+    padding: 4rem 2rem 2rem;     /* More balanced top and bottom spacing */
+    max-width: 1000px;            /* Restrict width for better readability */
+    margin: 0 auto;              /* Center section horizontally */
+
+}
+
+.who-we-are .section-header h2 {
+    font-size: 3.4rem;           /* Slightly larger for prominence */
+    color: whitesmoke;           /* Deep, professional color */
+    text-shadow: 2px 2px 6px rgba(3, 3, 3, 0.925); /* Subtle shadow for depth */
+    line-height: 1.2;            /* Better spacing between lines */
+    margin-top: 0;               /* Removes extra space above heading */
+    margin-bottom: 1rem;         /* Space below heading */
+    font-weight: 900;            /* Bold heading */
+}
+
+
+.who-we-are .section-header h2 em {
+    font-style: normal;          /* Make emphasis look like a highlight */
+    color: rgb(170, 164, 164);              /* Highlight color for trust & freshness */
+    text-shadow: 1px 1px 3px rgba(32, 31, 31, 0.925); /* Subtle shadow for depth */
+    display: block;              /* Puts the emphasized text on a new line */
+    font-size: 1.1rem;           /* Smaller than main heading */
+    margin-top: 0.3rem;          
+}
+
+.who-we-are .section-header p {
+    font-size: 1.4rem;           /* Slightly larger for readability */
+    color: rgb(160, 156, 156);              /* Neutral, professional text color */
+    line-height: 1.5;            /* Comfortable paragraph spacing */
+    margin-top: 2.5rem;
+}
+
+
+/* ===================== RESPONSIVE ADJUSTMENTS ===================== */
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem;         /* Adjust heading for smaller screens */
+    }
+
+    .section-header h2 em {
+        font-size: 1.2rem;       /* Smaller highlight text */
+    }
+
+    .section-header p {
+        font-size: 1rem;          /* Adjust paragraph text */
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        padding: 3rem 1rem 1.5rem; /* Smaller padding for mobile */
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-header h2 em {
+        font-size: 1.1rem;
+    }
+
+    .section-header p {
+        font-size: 0.95rem;
+    }
+}
+
+ /* ===================== WHY & WHO WRAPPER ===================== */
+.why-who-wrapper {
+    position: relative; /* Required to position ::before pseudo-element for the top curve */
+    overflow: hidden;   /* Ensures the curve doesn’t overflow outside the section */
+
+    /* Background with dark gradient overlay and fixed image */
+    background: linear-gradient(
+        rgba(3, 7, 5, 0.85), /* Top gradient overlay */
+        rgba(3, 7, 5, 0.85)  /* Bottom gradient overlay */
+    ),
+    url("pictures/compund_slashing.jpeg"); /* Background image */
+    background-position: center;   /* Centers the background image */
+    background-size: cover;        /* Makes image cover entire section */
+    background-repeat: no-repeat;  /* Prevent image repetition */
+    background-attachment: fixed;  /* Keeps background fixed on scroll */
+
+    display: grid;                 /* Layout children in a grid */
+    grid-template-columns: 1fr 1fr; /* Two equal columns for Why & Who */
+    gap: 3rem;                     /* Space between the two columns */
+
+    padding: 9rem 5% 6rem;         /* Top padding for curve + side padding + bottom padding */
+    color: #f3f2f3;                /* Default text color for the section */
+
+    z-index: 0;                     /* Base stacking context for pseudo-element */
+}
+
+/* ===================== TOP CURVE ===================== */
+.why-who-wrapper::before {
+    content: "";                   /* Required for pseudo-element */
+    position: absolute;            /* Absolute positioning relative to wrapper */
+    top: 0;                        /* Attach to the very top of wrapper */
+    left: 0;                       /* Align left edge */
+    width: 100%;                   /* Full width of the wrapper */
+    height: 70px;                  /* Curve depth */
+
+    /* SVG background that forms the top curve */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,100 C25,0 75,0 100,100 L100,0 L0,0 Z' fill='white'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;  /* Prevent repetition */
+    background-position: top;      /* Align curve to top */
+    background-size: 100% 100%;    /* Stretch to cover full width & height */
+
+    z-index: 2;                     /* Places curve above background but below content */
+    pointer-events: none;           /* Allows clicks through the curve */
+}
+
+/* ===================== BOTTOM CURVE ===================== */
+.why-who-wrapper::after {
+    content: "";                   /* Required for pseudo-element */
+    position: absolute;            /* Absolute positioning relative to wrapper */
+    bottom: 0;                     /* Attach to the very bottom of wrapper */
+    left: 0;                       /* Align left edge */
+    width: 100%;                   /* Full width of the wrapper */
+    height: 70px;                  /* Curve depth */
+
+    /* SVG background that forms the downward-facing curve */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C25,100 75,100 100,0 L100,100 L0,100 Z' fill='white'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;  /* Prevent repetition */
+    background-position: bottom;   /* Align curve to bottom */
+    background-size: 100% 100%;    /* Stretch to cover full width & height */
+
+    z-index: 2;                     /* Places curve above background but below content */
+    pointer-events: none;           /* Allows clicks through the curve */
+}
+
+/* ===================== ENSURE CONTENT ABOVE CURVE ===================== */
+.why-who-wrapper > * {
+    position: relative;             /* Allows z-index to work on direct children */
+    z-index: 3;                     /* Ensures content stays above the curve */
+}
+
+/* ===================== SHARED SECTION STYLING ===================== */
+.why-we-exist,
+.who-we-serve {
+    background: rgba(255, 255, 255, 0.08); /* Semi-transparent background for glass effect */
+    padding: 3rem;                         /* Inner spacing */
+    border-radius: 16px;                   /* Rounded corners */
+    backdrop-filter: blur(6px);            /* Glass-like blur effect behind content */
+}
+
+/* ===================== HEADINGS ===================== */
+.why-we-exist h2,
+.who-we-serve h2 {
+    font-size: 2.8rem;       /* Large heading size */
+    font-weight: 900;        /* Bold headings */
+    margin-bottom: 1.5rem;   /* Space below heading */
+    color: #ffffff;           /* White heading text */
+}
+
+/* ===================== PARAGRAPHS ===================== */
+.why-we-exist p,
+.who-we-serve p {
+    font-size: 1.2rem;       /* Paragraph size */
+    line-height: 1.7;        /* Line spacing for readability */
+    color: #e6e6e6;          /* Light gray text */
+    margin-bottom: 2rem;     /* Space below paragraphs */
+}
+
+/* ===================== CLIENT LIST ===================== */
+.client-types {
+    list-style: disc;         /* Bulleted list */
+    padding-left: 1.2rem;     /* Indent for bullets */
+}
+
+.client-types li {
+    font-size: 1.1rem;        /* Font size for list items */
+    margin-bottom: 0.8rem;    /* Space between list items */
+    color: #dddddd;           /* Light gray list text */
+}
+
+/* ===================== RESPONSIVE STYLING ===================== */
+@media (max-width: 900px) {
+    .why-who-wrapper {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        padding: 4rem 2rem;         /* Reduce padding on smaller screens */
+    }
+
+    .why-we-exist h2,
+    .who-we-serve h2 {
+        font-size: 2.2rem;          /* Smaller headings */
+    }
+}
+
+@media (max-width: 480px) {
+    .why-we-exist,
+    .who-we-serve {
+        padding: 2rem;              /* Reduce card padding further */
+    }
+
+    .why-we-exist h2,
+    .who-we-serve h2 {
+        font-size: 1.9rem;          /* Smaller headings on very small screens */
+    }
+
+    .why-who-wrapper::before {
+        height: 45px;               /* Reduce curve height on small screens */
+    }
+}
+
+
+/* ===================== SHARED SECTION STYLING ===================== */
+.why-we-exist,
+.who-we-serve {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3rem;
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+}
+
+/* Headings */
+.why-we-exist h2,
+.who-we-serve h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+/* Paragraphs */
+.why-we-exist p,
+.who-we-serve p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #e6e6e6;
+    margin-bottom: 2rem;
+}
+
+/* ===================== CLIENT LIST ===================== */
+.client-types {
+    list-style: disc;
+    padding-left: 1.2rem;
+}
+
+.client-types li {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: #dddddd;
+}
+
+
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+    .why-who-wrapper {
+        grid-template-columns: 1fr;
+        padding: 4rem 2rem;
+    }
+
+    .why-we-exist h2,
+    .who-we-serve h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-we-exist,
+    .who-we-serve {
+        padding: 2rem;
+    }
+
+    .why-we-exist h2,
+    .who-we-serve h2 {
+        font-size: 1.9rem;
+    }
+}
+
+
   /* ===================== LIST STYLES ===================== */
   .client-types, .operation-principles {
     max-width: 900px;
