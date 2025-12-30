@@ -7,13 +7,39 @@
   }
   
   body {
-    background: #ccc5c5;
+    background-color: #25A378;
     color: #030705;
     line-height: 1.6;
 
-   
-
   }
+
+  /* ===========================
+   BACK BUTTON
+=========================== */
+.back-btn {
+    position: fixed;
+    top: 10px;
+    left: auto; /* move from right to left */
+    right: 10px; /* reset right */
+    background: rgba(97, 9, 9, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: rgb(243, 238, 238);
+    font-weight: 800;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+    z-index: 1000;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgb(10, 63, 8);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
   
   /* ===================== HERO / BANNER ===================== */
   .hero {
@@ -485,48 +511,251 @@
     font-size: 1rem;
   }
   
-  /* ===================== VISION & MISSION ===================== */
-  .vision-mission {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 3rem 5%;
-  }
-  
-  .vision, .mission {
-    background: #B54535;
+  /* ===================== COMBINED SECTION ===================== */
+.combined-section {
+    position: relative; /* Needed for pseudo-elements (top & bottom curves) */
+    background: linear-gradient(rgba(2, 10, 5, 0.85), rgba(2, 10, 5, 0.85)),
+                url("pictures/cabbage_garden.jpeg"); /* Shared background */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Creates modern parallax effect */
+    padding: 8rem 5% 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
     color: #f3f2f3;
-    padding: 2rem;
-    border-radius: 12px;
-    transition: transform 0.3s;
+    overflow: hidden;
   }
   
-  .vision:hover, .mission:hover {
-    transform: translateY(-5px);
+  /* ===================== TOP CURVE ===================== */
+  .combined-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,100 C25,0 75,0 100,100 L100,0 L0,0 Z' fill='white'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 2;
+    pointer-events: none;
   }
   
-  /* ===================== CTA ===================== */
-  .cta {
-    background: #19BC52;
-    color: #fff;
-    text-align: center;
-    padding: 4rem 2rem;
+  /* ===================== BOTTOM CURVE ===================== */
+  .combined-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C25,100 75,100 100,0 L100,100 L0,100 Z' fill='white'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 2;
+    pointer-events: none;
   }
   
-  .cta-button {
-    background: #030705;
-    color: #fff;
-    padding: 0.8rem 2rem;
-    text-decoration: none;
+  /* ===================== CARD STYLING ===================== */
+  .card {
+    background: rgba(255, 255, 255, 0.05); /* Semi-transparent glass effect */
+    padding: 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(8px); /* Frosted glass effect */
+    position: relative;
+    z-index: 3; /* Ensure content is above curves */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25); /* Modern floating look */
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeUp 1s forwards;
+  }
+  
+  /* ===================== VISON & MISSION FLEX ===================== */
+  .vision-mission-wrapper {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .vision-mission-wrapper .vision,
+  .vision-mission-wrapper .mission {
+    flex: 1 1 45%; /* Two columns on desktop, stack on mobile */
+  }
+  
+  /* ===================== SECTION HEADERS ===================== */
+  .section-header h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+  
+  .section-header p {
+    font-size: 1.2rem;
+    color: #e6e6e6;
+  }
+  
+  /* ===================== LIST ITEMS ===================== */
+  .operation-principles {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+  
+  .operation-principles li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #dddddd;
+    position: relative;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Hover animation for list items */
+  .operation-principles li:hover {
+    transform: translateX(10px);
+    color: #00ff99;
+  }
+  
+  /* ===================== ANIMATIONS ===================== */
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 900px) {
+    .vision-mission-wrapper {
+      flex-direction: column;
+    }
+    
+    .vision-mission-wrapper .vision,
+    .vision-mission-wrapper .mission {
+      flex: 1 1 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      padding: 2rem;
+    }
+  
+    .section-header h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  
+  /* ===================== CALL TO ACTION ===================== */
+.cta {
+    position: relative;
+    /*Foranydecorativepseudo-elements*/background: linear-gradient(        rgba(0, 150, 100, 0.85),       /* Green overlay */        rgba(0, 120, 80, 0.85)    ),    url("pictures/cta_background.jpeg");
+    /*CTAbackgroundimage*/background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /*Parallaxeffect*/padding: 3rem 5%;
+    /*Topandbottomspacing*/text-align: center;
+    /*Centerthecontent*/color: #ffffff;
+    /*Textcolor*/overflow: hidden;
+    /*Hideanyoverflowfrompseudo-elements*/border-radius: 0px;
+    /*Optionalroundededges*/box-shadow: 0 15px 35px rgba(0, 0, 0, 0.288);
+     /* Floating effect */:;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+/* ===================== CTA HEADINGS ===================== */
+.cta h2 {
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7); /* Subtle shadow for contrast */
+    font-size: 3rem;                     /* Large bold heading */
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;                          /* Start hidden for animation */
+}
+
+/* ===================== CTA PARAGRAPH ===================== */
+.cta p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+    color: #e6f5e6;                      /* Soft greenish text */
+    animation: fadeInUp 1.2s ease forwards;
+    opacity: 0;                          /* Start hidden */
+}
+
+/* ===================== CTA BUTTON ===================== */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #00ff99, #00cc77); /* Gradient button */
+    color: #ffffff;
     font-weight: 700;
-    border-radius: 30px;
-    transition: 0.3s;
-  }
-  
-  .cta-button:hover {
-    background: #055920;
-  }
-  
+    font-size: 1.2rem;
+    border-radius: 50px;                 /* Pill-shaped */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Floating effect */
+    transform: translateY(0);
+}
+
+/* Button hover animation */
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05); /* Lift + scale effect */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #00ffbb, #00aa77); /* Brighter gradient */
+}
+
+/* ===================== CTA ANIMATIONS ===================== */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+    .cta h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1.1rem;
+        padding: 0.9rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta h2 {
+        font-size: 2rem;
+    }
+
+    .cta p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.8rem;
+    }
+}
+
   /* ===================== FOOTER ===================== */
   footer {
     background: #030705;
@@ -576,4 +805,54 @@
       font-size: 1rem;
     }
   }
+
+  /* ===================== RESPONSIVE ADJUSTMENTS ONLY ===================== */
+
+/* Tablets and small desktops */
+@media (max-width: 900px) {
+    .hero-content h1 { font-size: 2.5rem; }      /* Smaller hero heading */
+    .hero-content p { font-size: 1.1rem; }      /* Adjust hero paragraph */
+    .who-we-are .section-header h2 { font-size: 2.5rem; }
+    .who-we-are .section-header h2 em { font-size: 1rem; }
+    .who-we-are .section-header p { font-size: 1.1rem; }
+
+    .vision-mission-wrapper { flex-direction: column; } /* Stack vision & mission */
+    .vision-mission-wrapper .vision,
+    .vision-mission-wrapper .mission { flex: 1 1 100%; } /* Full width */
+
+    .why-who-wrapper { grid-template-columns: 1fr; padding: 4rem 2rem; } /* Stack sections */
+    .why-we-exist h2,
+    .who-we-serve h2 { font-size: 2.2rem; }
+}
+
+/* Small devices / mobile */
+@media (max-width: 600px) {
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+
+    .cta h2 { font-size: 2.2rem; }
+    .cta p { font-size: 1rem; }
+    .cta-button { font-size: 1rem; padding: 0.8rem 1.8rem; }
+
+    .combined-section { padding: 6rem 5% 6rem; }
+    .card { padding: 2rem; }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 1.8rem; }
+    .hero-content p { font-size: 0.95rem; }
+
+    .who-we-are .section-header h2 { font-size: 1.8rem; }
+    .who-we-are .section-header h2 em { font-size: 0.95rem; }
+    .who-we-are .section-header p { font-size: 0.9rem; }
+
+    .why-we-exist,
+    .who-we-serve { padding: 2rem; }
+    .why-we-exist h2,
+    .who-we-serve h2 { font-size: 1.9rem; }
+
+    .why-who-wrapper::before { height: 45px; }
+}
+
   
